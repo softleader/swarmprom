@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:429",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -16,8 +15,8 @@
   "description": "Docker Swarm stacks and services metrics",
   "editable": true,
   "gnetId": null,
-  "graphTooltip": 0,
-  "iteration": 1520585594614,
+  "graphTooltip": 1,
+  "iteration": 1562576183648,
   "links": [],
   "panels": [
     {
@@ -403,10 +402,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[5m])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[5m])) by (container_label_com_docker_stack_namespace)",
           "format": "time_series",
-          "intervalFactor": 10,
-          "legendFormat": "{{ container_label_com_docker_swarm_service_name }}",
+          "interval": "2.5m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ container_label_com_docker_stack_namespace }}",
           "refId": "A",
           "step": 10
         }
@@ -414,9 +414,9 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Service Tasks",
+      "title": "Stack Tasks",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
@@ -443,9 +443,13 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -541,7 +545,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -583,7 +591,7 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
@@ -600,7 +608,7 @@
       "timeShift": null,
       "title": "CPU usage by Service",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
@@ -629,7 +637,11 @@
           "min": null,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "cacheTimeout": null,
@@ -774,7 +786,7 @@
       "timeShift": null,
       "title": "CPU usage by Container (top 10)",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
@@ -803,7 +815,11 @@
           "min": null,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -867,7 +883,7 @@
       "timeShift": null,
       "title": "Memory usage by Service",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -896,7 +912,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "cacheTimeout": null,
@@ -1036,7 +1056,7 @@
       "timeShift": null,
       "title": "Memory usage by Container (top 10)",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
@@ -1065,7 +1085,11 @@
           "min": null,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -1111,103 +1135,24 @@
           "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
+          "legendFormat": "[IN] {{container_label_com_docker_swarm_service_name}}",
           "refId": "A",
           "step": 2
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Network received by Service",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "Bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
         },
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 46
-      },
-      "id": 25,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "-1 * sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
-          "metric": "",
-          "refId": "B",
-          "step": 2
+          "legendFormat": "[OUT] {{container_label_com_docker_swarm_service_name}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Network transmitted by Service",
+      "title": "Network I/O by Service",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -1236,7 +1181,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -1249,7 +1198,7 @@
         "h": 7,
         "w": 10,
         "x": 0,
-        "y": 53
+        "y": 46
       },
       "id": 31,
       "legend": {
@@ -1278,7 +1227,7 @@
           "expr": "sum(rate(container_network_receive_bytes_total{id=\"/\"}[$interval])) by (id)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "Received",
+          "legendFormat": "Total Received",
           "refId": "A",
           "step": 4
         },
@@ -1286,9 +1235,23 @@
           "expr": "- sum(rate(container_network_transmit_bytes_total{id=\"/\"}[$interval])) by (id)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "Transmited",
+          "legendFormat": "Total Transmited",
           "refId": "B",
           "step": 4
+        },
+        {
+          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Services Received",
+          "refId": "C"
+        },
+        {
+          "expr": "- sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Services Transmited",
+          "refId": "D"
         }
       ],
       "thresholds": [],
@@ -1325,7 +1288,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -1338,7 +1305,7 @@
         "h": 7,
         "w": 10,
         "x": 10,
-        "y": 53
+        "y": 46
       },
       "id": 26,
       "legend": {
@@ -1366,20 +1333,34 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(container_fs_reads_total[$interval]) )",
+          "expr": "sum(irate(container_fs_reads_total[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "Reads",
+          "legendFormat": "Total Reads",
           "refId": "A",
           "step": 4
         },
         {
-          "expr": "sum(irate(container_fs_writes_total[$interval])) ",
+          "expr": "sum(irate(container_fs_writes_total[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "Writes ",
+          "legendFormat": "Total Writes",
           "refId": "B",
           "step": 4
+        },
+        {
+          "expr": "sum(irate(container_fs_reads_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Services Reads",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(irate(container_fs_writes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Services Writes",
+          "refId": "D"
         }
       ],
       "thresholds": [],
@@ -1416,7 +1397,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "cacheTimeout": null,
@@ -1440,7 +1425,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 53
+        "y": 46
       },
       "id": 27,
       "interval": null,
@@ -1512,7 +1497,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 60
+        "y": 53
       },
       "id": 29,
       "legend": {
@@ -1586,7 +1571,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -1600,7 +1589,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 60
+        "y": 53
       },
       "id": 30,
       "legend": {
@@ -1674,7 +1663,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "columns": [
@@ -1689,7 +1682,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 60
       },
       "hideTimeOverride": true,
       "id": 28,
@@ -1737,7 +1730,7 @@
       ],
       "timeFrom": "1s",
       "title": "Docker Engine Info",
-      "transform": "timeseries_to_rows",
+      "transform": "table",
       "type": "table"
     }
   ],
@@ -1765,11 +1758,18 @@
         "query": "node_meta",
         "refresh": 2,
         "regex": "/node_id=\"([^\"]+)\"/",
+        "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
-          "ofdocker",
-          "ofmon"
+          "swarm-worker-96",
+          "swarm-master-60",
+          "sladmin-91",
+          "sladmin-92",
+          "swarm-worker-97",
+          "swarm-worker-95",
+          "sladmin73",
+          "sleader74"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
         "type": "query",
@@ -1845,12 +1845,13 @@
         ],
         "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
         "refresh": 2,
+        "skipUrlSync": false,
         "type": "interval"
       }
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -1881,5 +1882,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 1
+  "version": 4
 }

@@ -15,8 +15,8 @@
   "description": "Docker Swarm nodes metrics",
   "editable": true,
   "gnetId": null,
-  "graphTooltip": 0,
-  "iteration": 1547535746076,
+  "graphTooltip": 1,
+  "iteration": 1562577477074,
   "links": [],
   "panels": [
     {
@@ -1314,13 +1314,208 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": null,
+      "fill": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 29
+      },
+      "hideTimeOverride": false,
+      "id": 25,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/rootfs\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"})",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "10m",
+          "intervalFactor": 1,
+          "legendFormat": "Used {{node_name}}:{{device}}",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disk usage % by Node",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "transparent": false,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": false,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "gbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": null,
+      "fill": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "hideTimeOverride": false,
+      "id": 26,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum((node_filesystem_size_bytes{mountpoint=\"/rootfs\"} - node_filesystem_free_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (device, node_name)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "10m",
+          "intervalFactor": 1,
+          "legendFormat": "Used {{node_name}}:{{device}}",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disk usage by Node",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "transparent": false,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": false,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "gbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
       "decimals": 2,
       "fill": 1,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 35
       },
       "id": 16,
       "legend": {
@@ -1331,6 +1526,7 @@
         "min": true,
         "rightSide": true,
         "show": true,
+        "sideWidth": 500,
         "total": false,
         "values": true
       },
@@ -1348,18 +1544,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(node_disk_read_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
+          "expr": "sum(irate(node_disk_read_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (instance, node_name)",
           "format": "time_series",
+          "interval": "5m",
           "intervalFactor": 2,
-          "legendFormat": "Read {{node_name}}",
+          "legendFormat": "[READ] {{instance}} {{node_name}}",
           "refId": "A",
           "step": 2
         },
         {
-          "expr": "sum(irate(node_disk_written_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
+          "expr": "-1 * sum(irate(node_disk_written_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (instance, node_name)",
           "format": "time_series",
+          "interval": "5m",
           "intervalFactor": 2,
-          "legendFormat": "Written {{node_name}}",
+          "legendFormat": "[WRITE] {{instance}} {{node_name}}",
           "refId": "B",
           "step": 2
         }
@@ -1370,7 +1568,7 @@
       "title": "Disk I/O by Node",
       "tooltip": {
         "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -1384,7 +1582,112 @@
       "yaxes": [
         {
           "format": "Bps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
           "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 28,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 500,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 1,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval])) by (instance, container_label_com_docker_swarm_service_name)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "5m",
+          "intervalFactor": 2,
+          "legendFormat": "[READ] {{ instance }}/{{ container_label_com_docker_swarm_service_name }}",
+          "refId": "A"
+        },
+        {
+          "expr": "-1 * sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval])) by (instance, container_label_com_docker_swarm_service_name)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "5m",
+          "intervalFactor": 2,
+          "legendFormat": "[WRITE] {{ instance }}/{{ container_label_com_docker_swarm_service_name }}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disk I/O by Service",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "decbytes",
+          "label": "",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1416,7 +1719,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 49
       },
       "id": 18,
       "legend": {
@@ -1512,7 +1815,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 36
+        "y": 49
       },
       "id": 19,
       "legend": {
@@ -1602,7 +1905,7 @@
         "h": 7,
         "w": 18,
         "x": 0,
-        "y": 43
+        "y": 56
       },
       "id": 12,
       "legend": {
@@ -1615,8 +1918,8 @@
         "min": false,
         "rightSide": true,
         "show": true,
-        "sort": "current",
-        "sortDesc": true,
+        "sort": null,
+        "sortDesc": null,
         "total": false,
         "values": true
       },
@@ -1631,13 +1934,15 @@
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": true,
-      "steppedLine": false,
+      "steppedLine": true,
       "targets": [
         {
-          "expr": "sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[5m])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[30s]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by(node_name)",
           "format": "time_series",
+          "hide": false,
+          "interval": "1m",
           "intervalFactor": 10,
-          "legendFormat": "{{ container_label_com_docker_swarm_service_name }}",
+          "legendFormat": "{{ node_name }}",
           "refId": "A",
           "step": 10
         }
@@ -1645,7 +1950,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Running Containers by Service",
+      "title": "Running Containers by Node",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1665,7 +1970,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -1674,7 +1979,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -1685,6 +1990,8 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
       "colorValue": false,
       "colors": [
         "rgba(245, 54, 54, 0.9)",
@@ -1704,7 +2011,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 43
+        "y": 56
       },
       "id": 7,
       "interval": null,
@@ -1745,6 +2052,7 @@
         {
           "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[5m])) ",
           "format": "time_series",
+          "instant": false,
           "intervalFactor": 2,
           "refId": "A",
           "step": 20
@@ -1752,6 +2060,7 @@
       ],
       "thresholds": "",
       "title": "Total Containers",
+      "transparent": false,
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -1761,7 +2070,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
       "aliasColors": {},
@@ -1774,7 +2083,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 63
       },
       "id": 17,
       "legend": {
@@ -1868,7 +2177,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 70
       },
       "hideTimeOverride": true,
       "id": 20,
@@ -1885,7 +2194,7 @@
           "alias": "Time",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
-          "type": "hidden"
+          "type": "date"
         },
         {
           "alias": "",
@@ -1906,7 +2215,6 @@
         {
           "expr": "sum(node_meta) by (node_id, node_name, instance)",
           "format": "table",
-          "instant": true,
           "intervalFactor": 2,
           "refId": "A",
           "step": 2
@@ -1946,8 +2254,14 @@
         "sort": 0,
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
-          "ofdocker",
-          "ofmon"
+          "swarm-worker-96",
+          "swarm-master-60",
+          "sladmin-91",
+          "sladmin-92",
+          "swarm-worker-97",
+          "swarm-worker-95",
+          "sladmin73",
+          "sleader74"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
         "type": "query",
@@ -2029,7 +2343,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -2060,5 +2374,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 3
+  "version": 9
 }
