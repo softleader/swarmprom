@@ -1,3 +1,12 @@
+# softleader customized
+此專案已調整為松凌可部屬版本
+
+## 變更 grafana dashboard 設定
+以Admin權限登入後於畫面上進行元件修改，按下儲存會提示複製JSON或另存新檔
+將複製下來的JSON貼到相對應的設定檔並 commit&push
+設定檔路徑 `./grafana/dashboards`
+並重新至master:~/docker-swarm-prom `git pull .` 即可，過程不需重啟server
+
 # swarmprom
 
 Swarmprom is a starter kit for Docker Swarm monitoring with [Prometheus](https://prometheus.io/),
