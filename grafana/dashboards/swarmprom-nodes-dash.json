@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562577477074,
+  "iteration": 1562637368270,
   "links": [],
   "panels": [
     {
@@ -1343,14 +1343,14 @@
       "nullPointMode": "null",
       "percentage": false,
       "pointradius": 2,
-      "points": true,
+      "points": false,
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": true,
+      "steppedLine": false,
       "targets": [
         {
           "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/rootfs\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"})",
@@ -1441,7 +1441,7 @@
       "nullPointMode": "null",
       "percentage": false,
       "pointradius": 2,
-      "points": true,
+      "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
       "seriesOverrides": [],
@@ -2374,5 +2374,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 9
+  "version": 10
 }
