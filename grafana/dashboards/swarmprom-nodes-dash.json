@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562637368270,
+  "iteration": 1562745073609,
   "links": [],
   "panels": [
     {
@@ -1544,20 +1544,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(node_disk_read_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (instance, node_name)",
+          "expr": "sum(irate(node_disk_read_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 2,
-          "legendFormat": "[READ] {{instance}} {{node_name}}",
+          "legendFormat": "[READ] {{node_name}}",
           "refId": "A",
           "step": 2
         },
         {
-          "expr": "-1 * sum(irate(node_disk_written_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (instance, node_name)",
+          "expr": "-1 * sum(irate(node_disk_written_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 2,
-          "legendFormat": "[WRITE] {{instance}} {{node_name}}",
+          "legendFormat": "[WRITE] {{node_name}}",
           "refId": "B",
           "step": 2
         }
@@ -1646,23 +1646,23 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval])) by (instance, container_label_com_docker_swarm_service_name)",
+          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "interval": "5m",
           "intervalFactor": 2,
-          "legendFormat": "[READ] {{ instance }}/{{ container_label_com_docker_swarm_service_name }}",
+          "legendFormat": "[READ] {{ node_name }}/{{ container_label_com_docker_swarm_service_name }}",
           "refId": "A"
         },
         {
-          "expr": "-1 * sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_service_name=~\".+\"}[$interval])) by (instance, container_label_com_docker_swarm_service_name)",
+          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "interval": "5m",
           "intervalFactor": 2,
-          "legendFormat": "[WRITE] {{ instance }}/{{ container_label_com_docker_swarm_service_name }}",
+          "legendFormat": "[WRITE] {{ node_name }}/{{ container_label_com_docker_swarm_service_name }}",
           "refId": "B"
         }
       ],
@@ -2237,6 +2237,7 @@
       {
         "allValue": ".+",
         "current": {
+          "tags": [],
           "text": "All",
           "value": "$__all"
         },
@@ -2374,5 +2375,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 10
+  "version": 11
 }

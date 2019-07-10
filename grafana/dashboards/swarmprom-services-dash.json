@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562738465135,
+  "iteration": 1562738465143,
   "links": [],
   "panels": [
     {
@@ -414,7 +414,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Node Tasks",
+      "title": "Running Containers by Node",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1195,10 +1195,105 @@
       "datasource": null,
       "fill": 1,
       "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 36,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
+          "format": "time_series",
+          "interval": "1m",
+          "intervalFactor": 2,
+          "legendFormat": "[READ] {{ node_name }}/{{ container_label_com_docker_swarm_service_name }}",
+          "refId": "A"
+        },
+        {
+          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
+          "format": "time_series",
+          "interval": "1m",
+          "intervalFactor": 2,
+          "legendFormat": "[WRITE] {{ node_name }}/{{ container_label_com_docker_swarm_service_name }}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disk I/O by Service",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 2,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "gridPos": {
         "h": 7,
         "w": 10,
         "x": 0,
-        "y": 46
+        "y": 55
       },
       "id": 31,
       "legend": {
@@ -1305,7 +1400,7 @@
         "h": 7,
         "w": 10,
         "x": 10,
-        "y": 46
+        "y": 55
       },
       "id": 26,
       "legend": {
@@ -1425,7 +1520,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 46
+        "y": 55
       },
       "id": 27,
       "interval": null,
@@ -1497,7 +1592,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 62
       },
       "id": 29,
       "legend": {
@@ -1589,7 +1684,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 62
       },
       "id": 30,
       "legend": {
@@ -1682,7 +1777,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 69
       },
       "hideTimeOverride": true,
       "id": 28,
