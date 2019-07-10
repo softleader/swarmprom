@@ -65,6 +65,7 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=sleader
       - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
       #- GF_SERVER_ROOT_URL=${GF_SERVER_ROOT_URL:-localhost}
       #- GF_SMTP_ENABLED=${GF_SMTP_ENABLED:-false}
       #- GF_SMTP_FROM_ADDRESS=${GF_SMTP_FROM_ADDRESS:-grafana@test.com}
@@ -75,7 +76,7 @@ services:
     volumes:
       - grafana:/var/lib/grafana
       - ./grafana/dashboards:/etc/grafana/dashboards/
-      - ./grafana/conf/grafana.ini:/usr/share/grafana/conf/grafana.ini
+#      - ./grafana/conf/grafana.ini:/etc/grafana/grafana.ini
     deploy:
       mode: replicated
       replicas: 1
