@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562745073609,
+  "iteration": 1562752031081,
   "links": [],
   "panels": [
     {
@@ -1309,6 +1309,39 @@
       }
     },
     {
+      "alert": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                0.5
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "frequency": "60s",
+        "handler": 1,
+        "name": "Disk usage Over 50%",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1353,7 +1386,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/rootfs\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"})",
+          "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/rootfs\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\".*\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1364,7 +1397,15 @@
           "step": 2
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 0.5
+        }
+      ],
       "timeFrom": null,
       "timeShift": null,
       "title": "Disk usage % by Node",
@@ -2237,7 +2278,6 @@
       {
         "allValue": ".+",
         "current": {
-          "tags": [],
           "text": "All",
           "value": "$__all"
         },
@@ -2375,5 +2415,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 11
+  "version": 12
 }
