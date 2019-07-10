@@ -75,7 +75,7 @@ services:
     volumes:
       - grafana:/var/lib/grafana
       - ./grafana/dashboards:/etc/grafana/dashboards/
-      - ./grafana/conf:/etc/grafana/conf/
+      - ./grafana/conf/grafana.ini:/usr/share/grafana/conf/grafana.ini
     deploy:
       mode: replicated
       replicas: 1
