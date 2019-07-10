@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562738465143,
+  "iteration": 1562746635883,
   "links": [],
   "panels": [
     {
@@ -82,7 +82,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id =~\"$node_id\"}) by (container_label_com_docker_swarm_node_id))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id =~\"$node_id\", image=~\"$image\"}) by (container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -167,7 +167,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_stack_namespace=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\"}) by (container_label_com_docker_stack_namespace))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_stack_namespace=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image\"}) by (container_label_com_docker_stack_namespace))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -252,7 +252,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_service_name=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\"}) by (container_label_com_docker_swarm_service_name))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_service_name=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image\"}) by (container_label_com_docker_swarm_service_name))",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -337,7 +337,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[5m])) ",
+          "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image\"}[5m])) ",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -367,26 +367,26 @@
       "decimals": 0,
       "fill": 5,
       "gridPos": {
-        "h": 7,
-        "w": 12,
+        "h": 8,
+        "w": 15,
         "x": 0,
         "y": 4
       },
       "id": 12,
       "legend": {
-        "alignAsTable": true,
+        "alignAsTable": false,
         "avg": false,
-        "current": true,
+        "current": false,
         "hideEmpty": true,
         "hideZero": true,
         "max": false,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "sort": "current",
         "sortDesc": true,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -460,9 +460,9 @@
       "decimals": 0,
       "fill": 1,
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
+        "h": 8,
+        "w": 9,
+        "x": 15,
         "y": 4
       },
       "id": 32,
@@ -563,7 +563,7 @@
         "h": 7,
         "w": 20,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 22,
       "legend": {
@@ -666,7 +666,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 11,
@@ -741,7 +741,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 33,
       "legend": {
@@ -832,7 +832,7 @@
         "h": 7,
         "w": 20,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "id": 24,
       "legend": {
@@ -940,7 +940,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 25
+        "y": 26
       },
       "id": 8,
       "interval": null,
@@ -1011,7 +1011,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 33
       },
       "id": 34,
       "legend": {
@@ -1102,7 +1102,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 40
       },
       "id": 17,
       "legend": {
@@ -1198,7 +1198,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 47
       },
       "id": 36,
       "legend": {
@@ -1293,7 +1293,7 @@
         "h": 7,
         "w": 10,
         "x": 0,
-        "y": 55
+        "y": 56
       },
       "id": 31,
       "legend": {
@@ -1400,7 +1400,7 @@
         "h": 7,
         "w": 10,
         "x": 10,
-        "y": 55
+        "y": 56
       },
       "id": 26,
       "legend": {
@@ -1520,7 +1520,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 55
+        "y": 56
       },
       "id": 27,
       "interval": null,
@@ -1592,7 +1592,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 62
+        "y": 63
       },
       "id": 29,
       "legend": {
@@ -1684,7 +1684,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 62
+        "y": 63
       },
       "id": 30,
       "legend": {
@@ -1777,7 +1777,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 69
+        "y": 70
       },
       "hideTimeOverride": true,
       "id": 28,
@@ -2003,5 +2003,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 5
+  "version": 7
 }
