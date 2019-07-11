@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562824336736,
+  "iteration": 1562826643707,
   "links": [],
   "panels": [
     {
@@ -82,7 +82,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id =~\"$node_id\", image=~\"$image:.+\"}) by (container_label_com_docker_swarm_node_id))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id =~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -167,7 +167,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_stack_namespace=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}) by (container_label_com_docker_stack_namespace))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_stack_namespace=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_stack_namespace))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -252,7 +252,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_service_name=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}) by (container_label_com_docker_swarm_service_name))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_service_name=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_service_name))",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -337,7 +337,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}[5m])) ",
+          "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[5m])) ",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -402,7 +402,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}[5m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "round(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[5m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
           "interval": "2.5m",
           "intervalFactor": 1,
@@ -595,7 +595,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\", id=~\"/docker/.*\"}[1m])) by (container_label_com_docker_swarm_service_name) * 100 ",
+          "expr": "sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[1m])) by (container_label_com_docker_swarm_service_name) * 100 ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
@@ -773,7 +773,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(10, sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\", id=~\"/docker/.*\"}[$interval])) by (name)) * 100 ",
+          "expr": "topk(10, sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval])) by (name)) * 100 ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{name}}",
@@ -862,7 +862,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
+          "expr": "sum(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Used {{container_label_com_docker_swarm_service_name}}",
@@ -870,7 +870,7 @@
           "step": 2
         },
         {
-          "expr": "sum(container_memory_cache{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
+          "expr": "sum(container_memory_cache{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Cached {{container_label_com_docker_swarm_service_name}}",
@@ -1043,7 +1043,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\", id=~\"/docker/.*\"}[$interval]))",
+          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{name}}",
@@ -1132,7 +1132,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "[IN] {{container_label_com_docker_swarm_service_name}}",
@@ -1140,7 +1140,7 @@
           "step": 2
         },
         {
-          "expr": "-1 * sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "-1 * sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "[OUT] {{container_label_com_docker_swarm_service_name}}",
@@ -1226,7 +1226,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
+          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 2,
@@ -1234,7 +1234,7 @@
           "refId": "A"
         },
         {
-          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", image=~\"$image:.+\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
+          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 2,
@@ -1319,35 +1319,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_network_receive_bytes_total{id=\"/\", image=~\"$image:.+\"}[$interval])) by (id)",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "Total Received",
-          "refId": "A",
-          "step": 4
-        },
-        {
-          "expr": "- sum(rate(container_network_transmit_bytes_total{id=\"/\", image=~\"$image:.+\"}[$interval])) by (id)",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "Total Transmited",
-          "refId": "B",
-          "step": 4
-        },
-        {
-          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_service_name=~\".+\", image=~\"$image:.+\"}[$interval]))",
+          "expr": "sum(rate(container_network_receive_bytes_total[$interval]))",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Services Received {$image}",
+          "legendFormat": "Received",
           "refId": "C"
         },
         {
-          "expr": "- sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_service_name=~\".+\", image=~\"$image:.+\"}[$interval]))",
+          "expr": "- sum(rate(container_network_transmit_bytes_total[$interval]))",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Services Transmited {$image}",
+          "legendFormat": "Transmited",
           "refId": "D"
         }
       ],
@@ -1430,7 +1412,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(container_fs_reads_total{instance=~\"$image:.+\"}[$interval]))",
+          "expr": "sum(irate(container_fs_reads_total{instance=~\"$service:.+\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Total Reads",
@@ -1438,7 +1420,7 @@
           "step": 4
         },
         {
-          "expr": "sum(irate(container_fs_writes_total{instance=~\"$image:.+\"}[$interval]))",
+          "expr": "sum(irate(container_fs_writes_total{instance=~\"$service:.+\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Total Writes",
@@ -1446,17 +1428,17 @@
           "step": 4
         },
         {
-          "expr": "sum(irate(container_fs_reads_total{container_label_com_docker_swarm_service_name=~\".+\", image=~\"$image:.+\"}[$interval]))",
+          "expr": "sum(irate(container_fs_reads_total{container_label_com_docker_swarm_service_name=~\"$service\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Services Reads {$image}",
+          "legendFormat": "Services Reads",
           "refId": "C"
         },
         {
-          "expr": "sum(irate(container_fs_writes_total{container_label_com_docker_swarm_service_name=~\".+\", image=~\"$image:.+\"}[$interval]))",
+          "expr": "sum(irate(container_fs_writes_total{container_label_com_docker_swarm_service_name=~\"$service\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Services Writes {$image}",
+          "legendFormat": "Services Writes",
           "refId": "D"
         }
       ],
@@ -1948,21 +1930,22 @@
       {
         "allValue": ".+",
         "current": {
-          "text": "All",
+          "text": "jasmine-52190-reins_ri-composite-rpc + jasmine-52190-reins_ri-reinsurance-rpc",
           "value": [
-            "$__all"
+            "jasmine-52190-reins_ri-composite-rpc",
+            "jasmine-52190-reins_ri-reinsurance-rpc"
           ]
         },
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
-        "label": "Image Name",
+        "label": "Service Name",
         "multi": true,
-        "name": "image",
+        "name": "service",
         "options": [],
         "query": "container_last_seen",
         "refresh": 2,
-        "regex": "/image=\"([^\"]+?):.+\"/",
+        "regex": "/container_label_com_docker_swarm_service_name=\"([^\"]+?)\"/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -2005,5 +1988,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 8
+  "version": 9
 }
