@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562752031081,
+  "iteration": 1562911699403,
   "links": [],
   "panels": [
     {
@@ -167,8 +167,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(node_meta * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"})",
+          "expr": "count(node_meta{node_id=~\"$node_id\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A",
@@ -186,7 +187,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
       "cacheTimeout": null,
@@ -2302,6 +2303,7 @@
           "swarm-worker-97",
           "swarm-worker-95",
           "sladmin73",
+          "sladmin-76",
           "sleader74"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
@@ -2415,5 +2417,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 12
+  "version": 13
 }
