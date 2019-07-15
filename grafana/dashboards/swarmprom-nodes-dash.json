@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562911699403,
+  "iteration": 1563164972321,
   "links": [],
   "panels": [
     {
@@ -403,7 +403,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "node_load5 * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}",
+          "expr": "node_load1 * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "load5 {{node_name}}",
@@ -1244,6 +1244,8 @@
         "min": true,
         "rightSide": true,
         "show": true,
+        "sort": null,
+        "sortDesc": null,
         "total": false,
         "values": true
       },
@@ -2417,5 +2419,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 13
+  "version": 14
 }
