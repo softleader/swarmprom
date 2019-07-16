@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1562905511805,
+  "iteration": 1563241062064,
   "links": [],
   "panels": [
     {
@@ -28,7 +28,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -62,6 +61,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -113,7 +113,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -147,6 +146,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -198,7 +198,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -232,6 +231,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -283,7 +283,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -317,6 +316,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -363,7 +363,6 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "decimals": 0,
       "fill": 5,
       "gridPos": {
@@ -392,6 +391,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -402,9 +402,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[5m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
-          "interval": "2.5m",
+          "interval": "1m",
           "intervalFactor": 1,
           "legendFormat": "{{ node_name }}",
           "refId": "A",
@@ -413,6 +413,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Running Containers by Node",
       "tooltip": {
@@ -456,7 +457,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "decimals": 0,
       "fill": 1,
       "gridPos": {
@@ -485,6 +485,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -513,6 +514,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Health Checks",
       "tooltip": {
@@ -556,7 +558,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "decimals": 2,
       "fill": 1,
       "gridPos": {
@@ -585,6 +586,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -605,6 +607,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "CPU usage by Service",
       "tooltip": {
@@ -652,7 +655,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "decimals": null,
       "format": "percent",
       "gauge": {
@@ -686,6 +688,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -734,7 +737,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "decimals": 2,
       "fill": 1,
       "gridPos": {
@@ -763,6 +765,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -783,6 +786,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "CPU usage by Container (top 10)",
       "tooltip": {
@@ -826,7 +830,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -852,6 +855,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -880,6 +884,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Memory usage by Service",
       "tooltip": {
@@ -927,7 +932,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -959,6 +963,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1005,7 +1010,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1033,6 +1037,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1053,6 +1058,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Memory usage by Container (top 10)",
       "tooltip": {
@@ -1096,7 +1102,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1122,6 +1127,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1149,6 +1155,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Network I/O by Service",
       "tooltip": {
@@ -1192,7 +1199,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -1216,6 +1222,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1244,6 +1251,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Disk I/O by Service",
       "tooltip": {
@@ -1287,7 +1295,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1309,6 +1316,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1335,6 +1343,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Cluster Network Traffic",
       "tooltip": {
@@ -1378,7 +1387,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1402,6 +1410,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1444,6 +1453,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Cluster IOPS",
       "tooltip": {
@@ -1491,7 +1501,6 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": null,
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -1523,6 +1532,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1569,7 +1579,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "decimals": 0,
       "fill": 1,
       "gridPos": {
@@ -1598,6 +1607,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1618,6 +1628,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Docker Daemon Container Actions",
       "tooltip": {
@@ -1661,7 +1672,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "decimals": 0,
       "fill": 1,
       "gridPos": {
@@ -1690,6 +1700,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1710,6 +1721,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Docker Daemon Network Actions",
       "tooltip": {
@@ -1755,7 +1767,6 @@
           "value": "avg"
         }
       ],
-      "datasource": null,
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -1766,6 +1777,7 @@
       "hideTimeOverride": true,
       "id": 28,
       "links": [],
+      "options": {},
       "pageSize": null,
       "repeat": null,
       "scroll": true,
@@ -1814,7 +1826,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 16,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [
     "swarmprom"
@@ -1828,6 +1840,7 @@
           "value": "$__all"
         },
         "datasource": "Prometheus",
+        "definition": "",
         "hide": 0,
         "includeAll": true,
         "label": "Swarm Node",
@@ -1937,6 +1950,7 @@
           ]
         },
         "datasource": "Prometheus",
+        "definition": "",
         "hide": 0,
         "includeAll": true,
         "label": "Service Name",
@@ -1988,5 +2002,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 11
+  "version": 12
 }
