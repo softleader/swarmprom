@@ -1131,6 +1131,7 @@
       "valueName": "avg"
     },
     {
+      "description": "",
       "gridPos": {
         "h": 6,
         "w": 24,
@@ -1146,6 +1147,7 @@
             "last"
           ],
           "defaults": {
+            "decimals": 2,
             "max": 34359738368,
             "min": 0,
             "unit": "decbytes"
@@ -1159,8 +1161,13 @@
               "value": null
             },
             {
-              "color": "red",
+              "color": "#EAB839",
               "index": 1,
+              "value": 17179869184
+            },
+            {
+              "color": "red",
+              "index": 2,
               "value": 27487790694
             }
           ],
@@ -1168,6 +1175,8 @@
         },
         "orientation": "horizontal"
       },
+      "repeat": null,
+      "repeatDirection": "h",
       "targets": [
         {
           "expr": "sum((node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Cached_bytes - node_memory_Buffers_bytes - node_memory_Slab_bytes) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
