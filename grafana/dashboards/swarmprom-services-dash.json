@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1563259493656,
+  "iteration": 1563417364389,
   "links": [],
   "panels": [
     {
@@ -82,7 +82,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id =~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_node_id))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id =~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -167,7 +167,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_stack_namespace=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_stack_namespace))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_stack_namespace))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -252,7 +252,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_service_name=~\".+\", container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_service_name))",
+          "expr": "count(count(container_tasks_state{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_service_name))",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -337,7 +337,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[5m])) ",
+          "expr": "count(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[5m])) ",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -367,7 +367,7 @@
       "fill": 5,
       "gridPos": {
         "h": 8,
-        "w": 15,
+        "w": 12,
         "x": 0,
         "y": 4
       },
@@ -381,7 +381,7 @@
         "max": false,
         "min": false,
         "rightSide": false,
-        "show": true,
+        "show": false,
         "sort": "current",
         "sortDesc": true,
         "total": false,
@@ -402,7 +402,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 10,
@@ -454,18 +454,19 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
       "decimals": 0,
-      "fill": 1,
+      "fill": 5,
       "gridPos": {
         "h": 8,
-        "w": 9,
-        "x": 15,
+        "w": 12,
+        "x": 12,
         "y": 4
       },
-      "id": 32,
+      "id": 38,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -475,48 +476,54 @@
         "max": false,
         "min": false,
         "rightSide": true,
-        "show": false,
+        "show": true,
         "sort": "current",
         "sortDesc": true,
         "total": false,
         "values": true
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "null as zero",
       "options": {},
       "percentage": false,
+      "pluginVersion": "6.2.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
+      "stack": true,
+      "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(engine_daemon_health_checks_total[$interval]) * on(instance) group_left(node_id) swarm_node_info{node_id=~\"$node_id\"})  ",
+          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by(container_label_com_docker_stack_namespace))",
           "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "1m",
           "intervalFactor": 10,
-          "legendFormat": "checks",
+          "legendFormat": "{{ container_label_com_docker_stack_namespace }}",
           "refId": "A",
           "step": 10
         },
         {
-          "expr": "sum(increase(engine_daemon_health_checks_failed_total[$interval]) * on(instance) group_left(node_id) swarm_node_info{node_id=~\"$node_id\"})  ",
+          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", container_label_com_docker_stack_namespace=~\"\", image=~\".+\"}[1m])) by(container_label_com_docker_compose_service))",
           "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "1m",
           "intervalFactor": 10,
-          "legendFormat": "failed",
-          "refId": "B",
-          "step": 10
+          "legendFormat": "{{ container_label_com_docker_compose_service }}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Health Checks",
+      "title": "Running Containers by Stack",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -536,7 +543,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -545,7 +552,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -597,7 +604,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[1m])) by (container_label_com_docker_swarm_service_name) * 100 ",
+          "expr": "sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[1m])) by (container_label_com_docker_swarm_service_name) * 100 ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
@@ -776,7 +783,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(10, sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval])) by (name)) * 100 ",
+          "expr": "topk(10, sum(irate(container_cpu_usage_seconds_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval])) by (name)) * 100 ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{name}}",
@@ -866,7 +873,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
+          "expr": "sum(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Used {{container_label_com_docker_swarm_service_name}}",
@@ -874,7 +881,7 @@
           "step": 2
         },
         {
-          "expr": "sum(container_memory_cache{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
+          "expr": "sum(container_memory_cache{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}) by (container_label_com_docker_swarm_service_name) ",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Cached {{container_label_com_docker_swarm_service_name}}",
@@ -1048,7 +1055,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval]))",
+          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{name}}",
@@ -1138,7 +1145,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_node_id) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "sum(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}) by (container_label_com_docker_swarm_node_id) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 2,
@@ -1229,7 +1236,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "[IN] {{container_label_com_docker_swarm_service_name}}",
@@ -1237,7 +1244,7 @@
           "step": 2
         },
         {
-          "expr": "-1 * sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
+          "expr": "-1 * sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_service_name)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "[OUT] {{container_label_com_docker_swarm_service_name}}",
@@ -1324,7 +1331,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
+          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 2,
@@ -1332,7 +1339,7 @@
           "refId": "A"
         },
         {
-          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
+          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta != 0",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 2,
@@ -1512,7 +1519,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(container_fs_reads_total{instance=~\"$service:.+\"}[$interval]))",
+          "expr": "sum(irate(container_fs_reads_total{container_label_com_docker_stack_namespace=~\"$stack\", instance=~\"$service:.+\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Total Reads",
@@ -1520,7 +1527,7 @@
           "step": 4
         },
         {
-          "expr": "sum(irate(container_fs_writes_total{instance=~\"$service:.+\"}[$interval]))",
+          "expr": "sum(irate(container_fs_writes_total{container_label_com_docker_stack_namespace=~\"$stack\", instance=~\"$service:.+\"}[$interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Total Writes",
@@ -1528,15 +1535,17 @@
           "step": 4
         },
         {
-          "expr": "sum(irate(container_fs_reads_total{container_label_com_docker_swarm_service_name=~\"$service\"}[$interval]))",
+          "expr": "sum(irate(container_fs_reads_total{container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval]))",
           "format": "time_series",
+          "hide": false,
           "intervalFactor": 1,
           "legendFormat": "Services Reads",
           "refId": "C"
         },
         {
-          "expr": "sum(irate(container_fs_writes_total{container_label_com_docker_swarm_service_name=~\"$service\"}[$interval]))",
+          "expr": "sum(irate(container_fs_writes_total{container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval]))",
           "format": "time_series",
+          "hide": false,
           "intervalFactor": 1,
           "legendFormat": "Services Writes",
           "refId": "D"
@@ -1664,256 +1673,6 @@
         }
       ],
       "valueName": "avg"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 0,
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 63
-      },
-      "id": 29,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {},
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum(engine_daemon_container_actions_seconds_count * on(instance) group_left(node_id) swarm_node_info{node_id=~\"$node_id\"})  by (action)",
-          "format": "time_series",
-          "intervalFactor": 10,
-          "legendFormat": "{{action }}",
-          "refId": "A",
-          "step": 10
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Docker Daemon Container Actions",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 0,
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 63
-      },
-      "id": 30,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {},
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum(engine_daemon_network_actions_seconds_count * on(instance) group_left(node_id) swarm_node_info{node_id=~\"$node_id\"})  by (action)",
-          "format": "time_series",
-          "intervalFactor": 10,
-          "legendFormat": "{{action }}",
-          "refId": "A",
-          "step": 10
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Docker Daemon Network Actions",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "columns": [
-        {
-          "text": "Avg",
-          "value": "avg"
-        }
-      ],
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 70
-      },
-      "hideTimeOverride": true,
-      "id": 28,
-      "links": [],
-      "options": {},
-      "pageSize": null,
-      "repeat": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "hidden"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "expr": "sum(engine_daemon_engine_info * on(instance) group_left(node_id) swarm_node_info) by (kernel, os, graphdriver, version, node_id)",
-          "format": "table",
-          "instant": true,
-          "intervalFactor": 2,
-          "legendFormat": "",
-          "refId": "A",
-          "step": 2
-        }
-      ],
-      "timeFrom": "1s",
-      "title": "Docker Engine Info",
-      "transform": "table",
-      "type": "table"
     }
   ],
   "refresh": "30s",
@@ -2058,6 +1817,33 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "container_last_seen",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Stack Name",
+        "multi": true,
+        "name": "stack",
+        "options": [],
+        "query": "container_last_seen",
+        "refresh": 2,
+        "regex": "/container_label_com_docker_stack_namespace=\"([^\"]+?)\"/",
+        "skipUrlSync": false,
+        "sort": 5,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -2093,5 +1879,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 12
+  "version": 13
 }
