@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1563352476865,
+  "iteration": 1563359233170,
   "links": [],
   "panels": [
     {
@@ -1666,7 +1666,7 @@
         {
           "expr": "sum(irate(node_disk_read_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
           "format": "time_series",
-          "interval": "5m",
+          "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "[READ] {{node_name}}",
           "refId": "A",
@@ -1675,7 +1675,7 @@
         {
           "expr": "-1 * sum(irate(node_disk_written_bytes_total[$interval]) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
           "format": "time_series",
-          "interval": "5m",
+          "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "[WRITE] {{node_name}}",
           "refId": "B",
@@ -1759,7 +1759,7 @@
       "options": {},
       "percentage": false,
       "pointradius": 1,
-      "points": true,
+      "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
@@ -1771,7 +1771,7 @@
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "interval": "5m",
+          "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "[READ] {{ node_name }}/{{ container_label_com_docker_swarm_service_name }}",
           "refId": "A"
@@ -1781,7 +1781,7 @@
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "interval": "5m",
+          "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "[WRITE] {{ node_name }}/{{ container_label_com_docker_swarm_service_name }}",
           "refId": "B"
@@ -2501,5 +2501,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 16
+  "version": 17
 }
