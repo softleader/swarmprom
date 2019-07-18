@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1563417364389,
+  "iteration": 1563419686002,
   "links": [],
   "panels": [
     {
@@ -507,16 +507,6 @@
           "legendFormat": "{{ container_label_com_docker_stack_namespace }}",
           "refId": "A",
           "step": 10
-        },
-        {
-          "expr": "ceil(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_swarm_service_name=~\"$service\", container_label_com_docker_stack_namespace=~\"\", image=~\".+\"}[1m])) by(container_label_com_docker_compose_service))",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "1m",
-          "intervalFactor": 10,
-          "legendFormat": "{{ container_label_com_docker_compose_service }}",
-          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -1795,9 +1785,7 @@
         "allValue": ".+",
         "current": {
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -1879,5 +1867,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 13
+  "version": 14
 }
