@@ -58,7 +58,6 @@ services:
           memory: 64M
 
   grafana:
-    # image: stefanprodan/swarmprom-grafana:5.3.4
     image: softleader/swarmprom-grafana:6.2.5
     networks:
       - net
@@ -77,7 +76,6 @@ services:
     volumes:
       - grafana:/var/lib/grafana
       - ./grafana/dashboards:/etc/grafana/dashboards/
-#      - ./grafana/conf/grafana.ini:/etc/grafana/grafana.ini
     deploy:
       mode: replicated
       replicas: 1
@@ -90,43 +88,8 @@ services:
         reservations:
           memory: 64M
 
-#  alertmanager:
-#    image: stefanprodan/swarmprom-alertmanager:v0.14.0
-#    networks:
-#      - net
-#    environment:
-#      - SLACK_URL=
-#      - SLACK_CHANNEL=
-#      - SLACK_USER=
-#    command:
-#      - '--config.file=/etc/alertmanager/alertmanager.yml'
-#      - '--storage.path=/alertmanager'
-#    volumes:
-#      - alertmanager:/alertmanager
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      placement:
-#        constraints:
-#          - node.role == manager
-#      resources:
-#        limits:
-#          memory: 128M
-#        reservations:
-#          memory: 64M
-
-#  unsee:
-#    image: cloudflare/unsee:v0.8.0
-#    networks:
-#      - net
-#    environment:
-#      - "ALERTMANAGER_URIS=default:http://alertmanager:9093"
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-
   node-exporter:
-    image: stefanprodan/swarmprom-node-exporter:v0.16.0
+    image: softleader/swarmprom-node-exporter:0.18.1
     networks:
       - net
     environment:
@@ -142,6 +105,8 @@ services:
       - '--collector.textfile.directory=/etc/node-exporter/'
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
       - '--no-collector.ipvs'
+      - '--no-collector.boottime'
+      - '--no-collector.exec'
     deploy:
       mode: global
       resources:
@@ -151,7 +116,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: stefanprodan/swarmprom-prometheus:v2.5.0
+    image: softleader/swarmprom-prometheus:2.11.1
     networks:
       - net
     command:
