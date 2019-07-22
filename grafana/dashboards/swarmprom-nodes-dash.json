@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1563359233170,
+  "iteration": 1563759433253,
   "links": [],
   "panels": [
     {
@@ -1221,6 +1221,8 @@
         "min": true,
         "rightSide": true,
         "show": true,
+        "sort": "avg",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1317,8 +1319,8 @@
         "min": true,
         "rightSide": true,
         "show": true,
-        "sort": null,
-        "sortDesc": null,
+        "sort": "avg",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1445,6 +1447,8 @@
         "min": false,
         "rightSide": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1465,7 +1469,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/rootfs\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\".*\"})",
+          "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/\"}) * on(instance) group_left(node_name) node_meta{node_id=~\".*\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1551,6 +1555,8 @@
         "min": false,
         "rightSide": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1570,7 +1576,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum((node_filesystem_size_bytes{mountpoint=\"/rootfs\"} - node_filesystem_free_bytes{mountpoint=\"/rootfs\"}) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (device, node_name)",
+          "expr": "sum((node_filesystem_size_bytes{mountpoint=\"/\"} - node_filesystem_free_bytes{mountpoint=\"/\"}) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (device, node_name)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2501,5 +2507,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 17
+  "version": 18
 }
