@@ -113,8 +113,40 @@ services:
         reservations:
           memory: 64M
 
+  mssql-exporter:
+    image: softleader/database-exporter:0.0.1
+    networks:
+      - net
+    volumes:
+      - ./mssql-exporter/database_exporter.yml:/exporter/mssql_exporter.yml
+    command:
+      - "-config.file=mssql_exporter.yml"
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
+
+  oracle-exporter:
+    image: iamseth/oracledb_exporter:alpine
+    networks:
+      - net
+    environment:
+      - DATA_SOURCE_NAME=sl/sleader@192.168.1.75:1521/jasmineAH
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
+
   prometheus:
-    image: softleader/swarmprom-prometheus:2.11.1
+    image: softleader/swarmprom-prometheus:2.11.1-4
     networks:
       - net
     command:
