@@ -114,7 +114,7 @@ services:
           memory: 64M
 
   mssql-exporter:
-    image: softleader/database-exporter:0.0.2
+    image: softleader/database-exporter:0.0.3
     networks:
       - net
     volumes:
