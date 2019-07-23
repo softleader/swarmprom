@@ -114,12 +114,13 @@ services:
           memory: 64M
 
   mssql-exporter:
-    image: softleader/database-exporter:0.0.3
+    image: softleader/database-exporter:0.0.8
     networks:
       - net
     volumes:
       - ./mssql-exporter/database_exporter.yml:/exporter/mssql_exporter.yml
     command:
+      - "-logtostderr=true"
       - "-config.file=mssql_exporter.yml"
     deploy:
       mode: replicated

@@ -41,36 +41,72 @@ metrics:
 #      FROM sys.dm_os_performance_counters WITH (NOLOCK)
 #      WHERE counter_name = 'Number of Deadlocks/sec' AND instance_name = '_Total'
 
-  - metric_name: mssql_sessions
+  - metric_name: mssql_session_meta
     type: gauge
-    help: 'Sessions infos.'
+    help: 'Session infos.'
     key_labels:
       - db
-      - sqlstatementtext
-      - spid
-      - kpid
-      - blocked
       - dbid
-      - cpu
+      - connection_id
+      - spid
       - hostname
       - client_net_address
-      - program_name
       - loginame
+      - program_name
+    values:
+      - cnt_value
+    query_ref: mssql_sessions
+
+
+  - metric_name: mssql_session_last_cpu_used
+    type: gauge
+    help: 'Session cpu used.'
+    key_labels:
+      - db
+      - dbid
       - connection_id
-      - connect_time
+      - spid
+      - hostname
+      - client_net_address
+      - loginame
+      - program_name
+    values:
+      - cpu
+    query_ref: mssql_sessions
+
+  - metric_name: mssql_session_blocked
+    type: gauge
+    help: 'Sessions blocked.'
+    key_labels:
+      - db
+      - dbid
+      - connection_id
+      - spid
+      - hostname
+      - client_net_address
+      - loginame
+      - program_name
+    values:
+      - blocked
+    query_ref: mssql_sessions
+
+  - metric_name: mssql_session_read_write
+    type: counter
+    help: 'Sessions r/w.'
+    key_labels:
+      - db
+      - dbid
+      - connection_id
+      - spid
+      - hostname
+      - client_net_address
+      - loginame
+      - program_name
+    value_label: operation
+    values:
       - num_reads
       - num_writes
-    values: [cnt_value]
-    query: |
-      SELECT DB_NAME(sp.dbid) db, st.text sqlstatementtext,
-      sp.spid, kpid, blocked,
-      sp.dbid, sp.cpu, sp.hostname, cn.client_net_address, sp.program_name, sp.loginame,
-      cn.connection_id, cn.connect_time, cn.num_reads, cn.num_writes,
-      1 cnt_value
-      FROM sys.dm_exec_connections cn WITH (NOLOCK)
-      LEFT JOIN sys.sysprocesses sp WITH (NOLOCK) on cn.session_id = sp.spid
-      OUTER APPLY sys.dm_exec_sql_text(cn.most_recent_sql_handle) st
-      WHERE sp.dbid > 0;
+    query_ref: mssql_sessions
 
   - metric_name: mssql_user_errors
     type: counter
@@ -217,4 +253,14 @@ queries:
         memory_utilization_percentage,
         page_fault_count
       FROM sys.dm_os_process_memory
-      
+
+  - query_name: mssql_sessions
+    query: |
+      SELECT DB_NAME(sp.dbid) db,
+        sp.spid, kpid, blocked,
+        sp.dbid, sp.cpu, sp.hostname, cn.client_net_address, sp.program_name, sp.loginame,
+        convert(nvarchar(64),cn.connection_id) connection_id, cn.connect_time, cn.num_reads, cn.num_writes,
+        1 cnt_value
+      FROM sys.dm_exec_connections cn WITH (NOLOCK)
+      LEFT JOIN sys.sysprocesses sp WITH (NOLOCK) on cn.session_id = sp.spid
+      WHERE sp.dbid > 0
