@@ -48,4 +48,4 @@ scrape_configs:
       - names:
           - 'tasks.oracle-exporter'
         type: 'A'
-        port: 9161
+        port: 9285

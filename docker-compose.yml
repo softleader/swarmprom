@@ -114,11 +114,11 @@ services:
           memory: 64M
 
   mssql-exporter:
-    image: softleader/database-exporter:0.0.8
+    image: softleader/database-exporter:0.0.17
     networks:
       - net
     volumes:
-      - ./mssql-exporter/database_exporter.yml:/exporter/mssql_exporter.yml
+      - ./database-exporter/config/mssql_exporter.yml:/exporter/mssql_exporter.yml
     command:
       - "-logtostderr=true"
       - "-config.file=mssql_exporter.yml"
@@ -132,11 +132,14 @@ services:
           memory: 64M
 
   oracle-exporter:
-    image: iamseth/oracledb_exporter:alpine
+    image: softleader/database-exporter:0.0.17
     networks:
       - net
-    environment:
-      - DATA_SOURCE_NAME=sl/sleader@192.168.1.75:1521/jasmineAH
+    volumes:
+      - ./database-exporter/config/oracle_exporter.yml:/exporter/oracle_exporter.yml
+    command:
+      - "-logtostderr=true"
+      - "-config.file=oracle_exporter.yml"
     deploy:
       mode: replicated
       replicas: 1
@@ -147,7 +150,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: softleader/swarmprom-prometheus:2.11.1-4
+    image: softleader/swarmprom-prometheus:2.11.1-5
     networks:
       - net
     command:
