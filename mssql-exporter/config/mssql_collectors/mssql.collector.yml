@@ -44,6 +44,22 @@ metrics:
   - metric_name: mssql_sessions
     type: gauge
     help: 'Sessions infos.'
+    key_labels:
+      - db
+      - sqlstatementtext
+      - spid
+      - kpid
+      - blocked
+      - dbid
+      - cpu
+      - hostname
+      - client_net_address
+      - program_name
+      - loginame
+      - connection_id
+      - connect_time
+      - num_reads
+      - num_writes
     values: [cnt_value]
     query: |
       SELECT DB_NAME(sp.dbid) db, st.text sqlstatementtext,
