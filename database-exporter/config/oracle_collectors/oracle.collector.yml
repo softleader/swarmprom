@@ -243,3 +243,45 @@ metrics:
       WHEN 'ACTIVE' THEN 1
         ELSE 0 END "up"
       FROM v$instance
+
+  - metric_name: oracledb_session_meta
+    type: gauge
+    help: 'Session infos.'
+    key_labels:
+      - sid
+      - username
+      - machine
+      - program
+      - status
+    values:
+      - cnt_value
+    query_file: |
+      ./config/oracle_collectors/sql/session_meta.sql
+
+  - metric_name: oracledb_session_cpu_used
+    type: gauge
+    help: 'Session cpu used.'
+    key_labels:
+      - sid
+      - username
+      - machine
+      - program
+      - status
+    values:
+      - cpu_usage_seconds
+    query_file: |
+      ./config/oracle_collectors/sql/session_meta.sql
+
+  - metric_name: oracledb_session_blocked
+    type: gauge
+    help: 'Sessions blocked.'
+    key_labels:
+      - sid
+      - username
+      - machine
+      - program
+      - status
+    values:
+      - blocking_session
+    query_file: |
+      ./config/oracle_collectors/sql/session_meta.sql

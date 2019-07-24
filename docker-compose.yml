@@ -132,7 +132,7 @@ services:
           memory: 64M
 
   oracle-exporter:
-    image: softleader/database-exporter:0.0.19
+    image: softleader/database-exporter:0.0.23
     networks:
       - net
     volumes:
