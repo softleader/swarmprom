@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 9336,
   "graphTooltip": 0,
-  "iteration": 1563938638600,
+  "iteration": 1563959397585,
   "links": [],
   "panels": [
     {
@@ -1590,7 +1590,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1678,7 +1677,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1771,7 +1769,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": false,
   "schemaVersion": 18,
   "style": "dark",
   "tags": [
@@ -1783,18 +1781,18 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "master",
-          "value": "master"
+          "text": "AzaleaCki",
+          "value": "AzaleaCki"
         },
         "datasource": "Prometheus",
-        "definition": "mssql_session_meta",
+        "definition": "mssql_database_size",
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": false,
         "name": "database_name",
         "options": [],
-        "query": "mssql_session_meta",
+        "query": "mssql_database_size",
         "refresh": 1,
         "regex": "/db=\"(.*?)\"/",
         "skipUrlSync": false,
