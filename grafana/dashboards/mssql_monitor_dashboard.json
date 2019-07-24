@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 9336,
   "graphTooltip": 0,
-  "iteration": 1563934047441,
+  "iteration": 1563938638600,
   "links": [],
   "panels": [
     {
@@ -42,7 +42,7 @@
         "rgb(255, 0, 0)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "editable": true,
       "error": false,
       "format": "none",
@@ -178,7 +178,7 @@
         "#508642",
         "#bf1b00"
       ],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Number of lock requests per second that resulted in a deadlock since last restart",
       "editable": true,
       "error": false,
@@ -294,7 +294,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "decimals": null,
       "description": "Percentage of memory utilization",
       "editable": true,
@@ -429,7 +429,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "decimals": null,
       "description": "Percentage of memory utilization",
       "editable": true,
@@ -565,7 +565,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "decimals": null,
       "description": "Percentage of memory utilization",
       "editable": true,
@@ -699,7 +699,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Number of page faults since last restart",
       "editable": true,
       "error": false,
@@ -826,7 +826,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -916,7 +916,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -1001,7 +1001,7 @@
     },
     {
       "columns": [],
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Database Size information per instance",
       "fontSize": "100%",
       "gridPos": {
@@ -1128,7 +1128,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Number of active connections",
       "editable": true,
       "error": false,
@@ -1261,7 +1261,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Wait time (ms) of stall since last restart",
       "fill": 1,
       "gridPos": {
@@ -1352,7 +1352,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Wait time (ms) of stall since last restart",
       "fill": 1,
       "gridPos": {
@@ -1457,7 +1457,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "Prometheus",
       "description": "Number of active connections",
       "editable": true,
       "error": false,
@@ -1590,6 +1590,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1677,6 +1678,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1769,7 +1771,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "30s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [
@@ -1778,38 +1780,21 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "Prometheus",
-          "value": "Prometheus"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Datasource",
-        "multi": false,
-        "name": "datasource",
-        "options": [],
-        "query": "prometheus",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "jasmineDB",
-          "value": "jasmineDB"
+          "text": "master",
+          "value": "master"
         },
-        "datasource": "$datasource",
-        "definition": "mssql_database_size{instance=\"$instance\"}",
+        "datasource": "Prometheus",
+        "definition": "mssql_session_meta",
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": false,
         "name": "database_name",
         "options": [],
-        "query": "mssql_database_size{instance=\"$instance\"}",
+        "query": "mssql_session_meta",
         "refresh": 1,
         "regex": "/db=\"(.*?)\"/",
         "skipUrlSync": false,
@@ -1913,5 +1898,5 @@
   "timezone": "browser",
   "title": "MSSQL Exporter",
   "uid": "TocpL9Lizd",
-  "version": 1
+  "version": 2
 }
