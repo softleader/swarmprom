@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 9336,
   "graphTooltip": 0,
-  "iteration": 1563876497104,
+  "iteration": 1563934047441,
   "links": [],
   "panels": [
     {
@@ -38,7 +38,7 @@
       "colorBackground": false,
       "colorValue": true,
       "colors": [
-        "rgba(32, 33, 58, 0.9)",
+        "rgb(255, 0, 0)",
         "rgb(255, 0, 0)",
         "rgba(50, 172, 45, 0.97)"
       ],
@@ -60,7 +60,7 @@
         "y": 1
       },
       "id": 69,
-      "interval": null,
+      "interval": "$interval",
       "links": [],
       "mappingType": 1,
       "mappingTypes": [
@@ -94,12 +94,12 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "__name__",
+      "tableColumn": "Value",
       "targets": [
         {
           "alias": "",
           "dsType": "influxdb",
-          "expr": "up{instance=\"$instance\"}",
+          "expr": "sum(up{job=\"mssql-exporter\"})",
           "format": "table",
           "groupBy": [
             {
@@ -151,19 +151,19 @@
           ]
         }
       ],
-      "thresholds": "0,0,1",
+      "thresholds": "0,1",
       "title": "Server Health",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
-          "text": "HEALTHY",
+          "text": "OFFLINE",
           "value": "0"
         },
         {
           "op": "=",
-          "text": "NOT HEALTHY",
+          "text": "ONLINE",
           "value": "1"
         }
       ],
@@ -229,14 +229,14 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": false
+        "show": true
       },
       "tableColumn": "",
       "targets": [
         {
           "alias": "",
           "dsType": "influxdb",
-          "expr": "mssql_deadlocks{instance=\"$instance\"}",
+          "expr": "sum(mssql_session_blocked)",
           "format": "time_series",
           "groupBy": [],
           "intervalFactor": 2,
@@ -288,14 +288,15 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorValue": true,
+      "colorValue": false,
       "colors": [
-        "rgba(32, 33, 58, 0.9)",
-        "#f9e2d2",
-        "#bf1b00"
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
       ],
       "datasource": "$datasource",
-      "description": "Number of kill connection errors/sec since last restart",
+      "decimals": null,
+      "description": "Percentage of memory utilization",
       "editable": true,
       "error": false,
       "format": "none",
@@ -312,8 +313,8 @@
         "x": 8,
         "y": 1
       },
-      "id": 64,
-      "interval": null,
+      "id": 132,
+      "interval": "",
       "links": [],
       "mappingType": 1,
       "mappingTypes": [
@@ -330,486 +331,7 @@
       "nullPointMode": "null",
       "nullText": null,
       "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "dsType": "influxdb",
-          "expr": "mssql_kill_connection_errors{instance=\"$instance\"}",
-          "format": "time_series",
-          "groupBy": [],
-          "intervalFactor": 2,
-          "measurement": "State OFFLINE",
-          "policy": "default",
-          "query": "SELECT \"total\" FROM \"State OFFLINE\" WHERE \"servername\" =~ /$Instance$/ AND \"type\" = 'Database properties' AND $timeFilter",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "total"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "step": 60,
-          "tags": [
-            {
-              "key": "servername",
-              "operator": "=~",
-              "value": "/$Instance$/"
-            },
-            {
-              "condition": "AND",
-              "key": "type",
-              "operator": "=",
-              "value": "Database properties"
-            }
-          ]
-        }
-      ],
-      "thresholds": "0,1",
-      "title": "Kill Connection Errors",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "rgba(32, 33, 58, 0.9)",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(50, 172, 45, 0.97)"
-      ],
-      "datasource": "$datasource",
-      "description": "Wait time (s) of stall since last restart",
-      "editable": true,
-      "error": false,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 12,
-        "y": 1
-      },
-      "id": 65,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "null",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeat": null,
-      "repeatDirection": "v",
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "__name__",
-      "targets": [
-        {
-          "alias": "",
-          "dsType": "influxdb",
-          "expr": "avg(mssql_io_stall_total_seconds{instance=\"$instance\", db=\"$database_name\"})",
-          "format": "time_series",
-          "groupBy": [],
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "measurement": "State SUSPECT",
-          "policy": "default",
-          "query": "SELECT \"total\" FROM \"State SUSPECT\" WHERE \"servername\" =~ /$Instance$/ AND \"type\" = 'Database properties' AND $timeFilter",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "total"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "step": 60,
-          "tags": [
-            {
-              "key": "servername",
-              "operator": "=~",
-              "value": "/$Instance$/"
-            },
-            {
-              "condition": "AND",
-              "key": "type",
-              "operator": "=",
-              "value": "Database properties"
-            }
-          ]
-        }
-      ],
-      "thresholds": "",
-      "title": "Average Wait Time",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "rgba(32, 33, 58, 0.9)",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(50, 172, 45, 0.97)"
-      ],
-      "datasource": "$datasource",
-      "description": "Rate of Transact-SQL command batches received per second. This statistic is affected by all constraints (such as I/O, number of users, cache size, complexity of requests, and so on). High batch requests mean good throughput",
-      "editable": true,
-      "error": false,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 16,
-        "y": 1
-      },
-      "id": 66,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "null",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "dsType": "influxdb",
-          "expr": "rate(mssql_batch_requests{instance=\"$instance\"}[5m])",
-          "format": "time_series",
-          "groupBy": [],
-          "intervalFactor": 2,
-          "measurement": "State RECOVERING",
-          "policy": "default",
-          "query": "SELECT \"total\" FROM \"State RECOVERING\" WHERE \"servername\" =~ /$Instance$/ AND \"type\" = 'Database properties' AND $timeFilter",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "total"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "step": 60,
-          "tags": [
-            {
-              "key": "servername",
-              "operator": "=~",
-              "value": "/$Instance$/"
-            },
-            {
-              "condition": "AND",
-              "key": "type",
-              "operator": "=",
-              "value": "Database properties"
-            }
-          ]
-        }
-      ],
-      "thresholds": "",
-      "title": "Rate of Transact-SQL",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "rgba(32, 33, 58, 0.9)",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(50, 172, 45, 0.97)"
-      ],
-      "datasource": "$datasource",
-      "description": "Number of page faults since last restart",
-      "editable": true,
-      "error": false,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 20,
-        "y": 1
-      },
-      "id": 67,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "null",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "dsType": "influxdb",
-          "expr": "mssql_page_fault_count{instance=\"$instance\"}",
-          "format": "time_series",
-          "groupBy": [],
-          "intervalFactor": 2,
-          "legendFormat": "Page Fault Count",
-          "measurement": "State RECOVERY_PENDING",
-          "policy": "default",
-          "query": "SELECT \"total\" FROM \"State RECOVERY_PENDING\" WHERE \"servername\" =~ /$Instance$/ AND \"type\" = 'Database properties' AND $timeFilter",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "total"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "step": 60,
-          "tags": [
-            {
-              "key": "servername",
-              "operator": "=~",
-              "value": "/$Instance$/"
-            },
-            {
-              "condition": "AND",
-              "key": "type",
-              "operator": "=",
-              "value": "Database properties"
-            }
-          ]
-        }
-      ],
-      "thresholds": "",
-      "title": "Number of page faults",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 4
-      },
-      "id": 101,
-      "panels": [],
-      "repeat": null,
-      "title": "Memory",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "rgba(50, 172, 45, 0.97)",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(245, 54, 54, 0.9)"
-      ],
-      "datasource": "$datasource",
-      "description": "Percentage of memory utilization",
-      "editable": true,
-      "error": false,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 0,
-        "y": 5
-      },
-      "id": 90,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "null",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
+      "postfix": "%",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -830,7 +352,142 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "mssql_memory_utilization_percentage{instance=\"$instance\"}",
+          "expr": "sum(100-mssql_cpu_usage_idle)",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "measurement": "CPU (%)",
+          "metric": "",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "SQL process"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "step": 30,
+          "tags": [
+            {
+              "key": "servername",
+              "operator": "=~",
+              "value": "/^$Instance$/"
+            },
+            {
+              "condition": "AND",
+              "key": "type",
+              "operator": "=",
+              "value": "CPU usage"
+            }
+          ]
+        }
+      ],
+      "thresholds": "60,80,95",
+      "title": "CPU used",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
+      ],
+      "datasource": "$datasource",
+      "decimals": null,
+      "description": "Percentage of memory utilization",
+      "editable": true,
+      "error": false,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "id": 90,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "null",
+      "nullText": null,
+      "options": {},
+      "postfix": "%",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "expr": "sum(mssql_memory_utilization_percentage)",
           "format": "time_series",
           "groupBy": [
             {
@@ -898,6 +555,272 @@
       "valueName": "avg"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
+      ],
+      "datasource": "$datasource",
+      "decimals": null,
+      "description": "Percentage of memory utilization",
+      "editable": true,
+      "error": false,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "id": 133,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "null",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "expr": "sum(mssql_connections)",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "measurement": "CPU (%)",
+          "metric": "",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "SQL process"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "step": 30,
+          "tags": [
+            {
+              "key": "servername",
+              "operator": "=~",
+              "value": "/^$Instance$/"
+            },
+            {
+              "condition": "AND",
+              "key": "type",
+              "operator": "=",
+              "value": "CPU usage"
+            }
+          ]
+        }
+      ],
+      "thresholds": "60,80,95",
+      "title": "Connections",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(32, 33, 58, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "$datasource",
+      "description": "Number of page faults since last restart",
+      "editable": true,
+      "error": false,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "id": 67,
+      "interval": "$interval",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "null",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "",
+          "dsType": "influxdb",
+          "expr": "sum(rate(mssql_page_fault_count[$interval]))",
+          "format": "time_series",
+          "groupBy": [],
+          "intervalFactor": 1,
+          "legendFormat": "Page Fault Count",
+          "measurement": "State RECOVERY_PENDING",
+          "policy": "default",
+          "query": "SELECT \"total\" FROM \"State RECOVERY_PENDING\" WHERE \"servername\" =~ /$Instance$/ AND \"type\" = 'Database properties' AND $timeFilter",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "total"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "step": 60,
+          "tags": [
+            {
+              "key": "servername",
+              "operator": "=~",
+              "value": "/$Instance$/"
+            },
+            {
+              "condition": "AND",
+              "key": "type",
+              "operator": "=",
+              "value": "Database properties"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "title": "Number of page faults",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 101,
+      "panels": [],
+      "repeat": null,
+      "title": "Memory",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "cacheTimeout": null,
@@ -907,19 +830,22 @@
       "fill": 1,
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 5,
+        "w": 9,
+        "x": 0,
         "y": 5
       },
-      "id": 131,
+      "id": 129,
+      "interval": "$interval",
       "legend": {
+        "alignAsTable": false,
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
+        "rightSide": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -927,28 +853,27 @@
       "nullPointMode": "null",
       "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mssql_os_page_file{instance=\"$instance\"}",
+          "expr": "sum(mssql_os_memory) by(state)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{state}}",
-          "refId": "B"
+          "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Page File",
+      "title": "Physical Memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -995,19 +920,20 @@
       "fill": 1,
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 11,
+        "w": 8,
+        "x": 9,
         "y": 5
       },
-      "id": 129,
+      "id": 131,
+      "interval": "$interval",
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -1015,27 +941,28 @@
       "nullPointMode": "null",
       "options": {},
       "percentage": false,
+      "pluginVersion": "6.2.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mssql_os_memory{instance=\"$instance\"}",
+          "expr": "sum(mssql_os_page_file) by(state)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{state}}",
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Physical Memory",
+      "title": "Page File",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1090,7 +1017,7 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 2,
+        "col": 1,
         "desc": false
       },
       "styles": [
@@ -1168,7 +1095,7 @@
       "targets": [
         {
           "alias": "",
-          "expr": "mssql_database_size{instance=\"$instance\"}",
+          "expr": "sum(mssql_database_size{db=~\"$database_name\"}) by(db)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1208,13 +1135,14 @@
       "fill": 5,
       "grid": {},
       "gridPos": {
-        "h": 6,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
         "y": 12
       },
       "height": "",
       "id": 1,
+      "interval": "$interval",
       "legend": {
         "alignAsTable": false,
         "avg": true,
@@ -1246,7 +1174,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "mssql_connections{instance=\"$instance\"}",
+          "expr": "sum(mssql_connections{db=~\"$database_name\"})",
           "format": "time_series",
           "groupBy": [
             {
@@ -1329,102 +1257,6 @@
       }
     },
     {
-      "alerting": {},
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$datasource",
-      "description": "Number of user errors/sec since last restart",
-      "editable": true,
-      "error": false,
-      "fill": 5,
-      "grid": {},
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 12
-      },
-      "id": 2,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "sort": null,
-        "sortDesc": null,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {},
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "png",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "mssql_user_errors{instance=\"$instance\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "User errors",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "User Errors",
-      "tooltip": {
-        "msResolution": true,
-        "shared": true,
-        "sort": 2,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1436,9 +1268,10 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 112,
+      "interval": "$interval",
       "legend": {
         "avg": false,
         "current": false,
@@ -1463,11 +1296,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mssql_io_stall_seconds{instance=\"$instance\", operation=\"write\"}",
+          "expr": "sum(mssql_io_stall_seconds{db=~\"$database_name\"}) by(db, operation)",
           "format": "time_series",
           "hide": false,
+          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Write Stall Time",
+          "legendFormat": "{{db}} {{operation}}",
           "refId": "A"
         }
       ],
@@ -1525,7 +1359,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 19
       },
       "id": 105,
       "legend": {
@@ -1554,7 +1388,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mssql_io_stall_seconds",
+          "expr": "sum(mssql_io_stall_seconds{db=~\"$database_name\"}) by(db, operation)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1605,28 +1439,53 @@
       }
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 135,
+      "panels": [],
+      "title": "Sessions",
+      "type": "row"
+    },
+    {
+      "alerting": {},
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$datasource",
-      "description": "MSSQL Batch Requests",
-      "fill": 1,
+      "description": "Number of active connections",
+      "editable": true,
+      "error": false,
+      "fill": 5,
+      "grid": {},
       "gridPos": {
-        "h": 6,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 24
+        "y": 26
       },
-      "id": 120,
+      "height": "",
+      "id": 139,
+      "interval": "$interval",
       "legend": {
-        "avg": false,
+        "alignAsTable": false,
+        "avg": true,
         "current": false,
-        "max": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
         "min": false,
-        "show": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -1636,31 +1495,66 @@
       "percentage": false,
       "pointradius": 5,
       "points": false,
-      "renderer": "flot",
+      "renderer": "png",
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "",
-          "expr": "rate(mssql_batch_requests{instance=\"$instance\"}[5m])",
+          "dsType": "influxdb",
+          "expr": "sum(mssql_session_meta{db=~\"$database_name\"})",
           "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "instant": false,
           "intervalFactor": 1,
-          "legendFormat": "",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
-          "refId": "A"
+          "legendFormat": "Active Sessions",
+          "metric": "",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "step": 5,
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Batch Requests",
+      "title": "Active Sessions",
       "tooltip": {
+        "msResolution": true,
         "shared": true,
-        "sort": 0,
-        "value_type": "individual"
+        "sort": 2,
+        "value_type": "cumulative"
       },
       "type": "graph",
       "xaxis": {
@@ -1673,7 +1567,6 @@
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1681,7 +1574,6 @@
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1698,137 +1590,44 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
       "fill": 1,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 24
-      },
-      "id": 116,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {},
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "",
-          "expr": "rate(mssql_page_life_expectancy_seconds[5m])",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Page Life Expectancy",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$datasource",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 30
+        "y": 33
       },
-      "id": 114,
+      "id": 137,
       "legend": {
         "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": true,
+        "current": true,
         "max": false,
         "min": false,
         "rightSide": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "null as zero",
       "options": {},
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "",
-          "expr": "mssql_log_growths",
+          "expr": "sum(rate(mssql_session_last_cpu_used{db=~\"$database_name\"}[$interval])) by(loginame, hostname)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{db}}",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
+          "legendFormat": "{{loginame}}@{{hostname}}",
           "refId": "A"
         }
       ],
@@ -1836,9 +1635,9 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Log Growth",
+      "title": "Session Cpu Used",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -1878,152 +1677,64 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
       "fill": 1,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 30
-      },
-      "id": 127,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {},
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": true,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "",
-          "expr": "mssql_expensive_queries_by_duration{instance=\"$instance\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{xQueryText}}",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Expensive Queries by Duration",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$datasource",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 36
+        "y": 40
       },
-      "id": 126,
+      "id": 138,
       "legend": {
         "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
         "max": false,
         "min": false,
-        "rightSide": false,
+        "rightSide": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "null as zero",
       "options": {},
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "",
-          "expr": "mssql_expensive_queries_by_cpu{instance=\"$instance\"}",
+          "expr": "sum(rate(mssql_session_read_write{db=~\"$database_name\", operation=\"num_reads\"}[$interval])) by(loginame, hostname)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{xQueryText}}",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
+          "legendFormat": "READ {{loginame}}@{{hostname}}",
           "refId": "A"
+        },
+        {
+          "expr": "- sum(rate(mssql_session_read_write{db=~\"$database_name\", operation=\"num_writes\"}[$interval])) by(loginame, hostname)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "WRITE {{loginame}}@{{hostname}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Expensive Queries by CPU",
+      "title": "Session Read&Write",
       "tooltip": {
-        "shared": true,
-        "sort": 0,
+        "shared": false,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -2049,99 +1760,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$datasource",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 36
-      },
-      "id": 124,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {},
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": true,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "",
-          "expr": "mssql_expensive_queries_by_io{instance=\"$instance\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{xQueryText}}",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Expensive Queries by IO",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -2178,60 +1797,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "mssql-exporter",
-          "value": "mssql-exporter"
-        },
-        "datasource": "$datasource",
-        "definition": "",
-        "hide": 0,
-        "includeAll": false,
-        "label": "Job",
-        "multi": false,
-        "name": "job",
-        "options": [],
-        "query": "up",
-        "refresh": 1,
-        "regex": "/job=\"(.*?)\"/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allFormat": "glob",
-        "allValue": null,
-        "current": {
-          "text": "10.0.27.13:9285",
-          "value": "10.0.27.13:9285"
-        },
-        "datasource": "$datasource",
-        "definition": "up{job=\"$job\"}",
-        "hide": 0,
-        "includeAll": false,
-        "label": "Instance",
-        "multi": false,
-        "multiFormat": "glob",
-        "name": "instance",
-        "options": [],
-        "query": "up{job=\"$job\"}",
-        "refresh": 1,
-        "regex": "/instance=\"(.*?)\"/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": null,
-        "tags": [],
-        "tagsQuery": null,
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "text": "AzaleaCki",
-          "value": "AzaleaCki"
+          "tags": [],
+          "text": "jasmineDB",
+          "value": "jasmineDB"
         },
         "datasource": "$datasource",
         "definition": "mssql_database_size{instance=\"$instance\"}",
@@ -2251,11 +1819,69 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "auto": true,
+        "auto_count": 100,
+        "auto_min": "1s",
+        "current": {
+          "text": "auto",
+          "value": "$__auto_interval_interval"
+        },
+        "hide": 0,
+        "label": "Interval",
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
+          },
+          {
+            "selected": false,
+            "text": "5s",
+            "value": "5s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "1s,5s,1m,5m,1h,6h,1d",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
       }
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {

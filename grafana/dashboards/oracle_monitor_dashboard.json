@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 3333,
   "graphTooltip": 1,
-  "iteration": 1563877379099,
+  "iteration": 1563877948745,
   "links": [
     {
       "asDropdown": true,
@@ -109,7 +109,7 @@
           "calculatedInterval": "10m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_up{instance=\"$host\"}",
+          "expr": "sum(oracledb_up)",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -126,12 +126,12 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "DEAD",
+          "text": "OFFLINE",
           "value": "0"
         },
         {
           "op": "=",
-          "text": "ALIVE",
+          "text": "ONLINE",
           "value": "1"
         }
       ],
@@ -206,7 +206,7 @@
           "calculatedInterval": "10m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "sum(oracledb_sessions_activity{status=\"ACTIVE\",instance=\"$host\"})",
+          "expr": "sum(oracledb_sessions_activity{status=\"ACTIVE\"})",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -292,7 +292,7 @@
           "calculatedInterval": "10m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_activity_user_commits{instance=\"$host\"}",
+          "expr": "sum(rate(oracledb_activity_user_commits[$interval]))",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -379,7 +379,7 @@
           "calculatedInterval": "10m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_activity_execute_count{instance=\"$host\"}",
+          "expr": "sum(rate(oracledb_activity_execute_count[$interval]))",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -457,7 +457,7 @@
           "calculatedInterval": "2m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_wait_time_concurrency{instance=\"$host\"}",
+          "expr": "sum(oracledb_wait_time_concurrency)",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -554,7 +554,7 @@
           "calculatedInterval": "2m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_wait_time_commit{instance=\"$host\"}",
+          "expr": "sum(oracledb_wait_time_commit)",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -651,7 +651,7 @@
           "calculatedInterval": "2m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_wait_time_system_io{instance=\"$host\"}",
+          "expr": "sum(oracledb_wait_time_system_io)",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -748,7 +748,7 @@
           "calculatedInterval": "2m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_wait_time_user_io{instance=\"$host\"}\t",
+          "expr": "sum(oracledb_wait_time_user_io)",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -845,7 +845,7 @@
           "calculatedInterval": "2m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_wait_time_application{instance=\"$host\"}\t",
+          "expr": "sum(oracledb_wait_time_application)",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -942,7 +942,7 @@
           "calculatedInterval": "2m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "oracledb_wait_time_network{instance=\"$host\"}\t",
+          "expr": "sum(oracledb_wait_time_network)",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -1033,7 +1033,7 @@
       "targets": [
         {
           "alias": "",
-          "expr": "oracledb_metric",
+          "expr": "sum(oracledb_metric) by(dbname, name)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "DB: {{dbname}} - Activity: {{name}}",
@@ -1083,7 +1083,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "30s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [
@@ -1110,39 +1110,11 @@
       },
       {
         "allFormat": "glob",
-        "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "10.0.29.12:9285",
-          "value": "10.0.29.12:9285"
-        },
-        "datasource": "Prometheus",
-        "definition": "oracledb_up",
-        "hide": 0,
-        "includeAll": false,
-        "label": "",
-        "multi": false,
-        "multiFormat": "regex values",
-        "name": "host",
-        "options": [],
-        "query": "oracledb_up",
-        "refresh": 1,
-        "refresh_on_load": false,
-        "regex": "/.*instance=\"(.+?)\".*/",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": null,
-        "tags": [],
-        "tagsQuery": null,
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allFormat": "glob",
         "auto": true,
         "auto_count": 200,
         "auto_min": "1s",
         "current": {
+          "tags": [],
           "text": "1m",
           "value": "1m"
         },
@@ -1203,7 +1175,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -1240,5 +1212,5 @@
   "timezone": "browser",
   "title": "OracleDB Exporter",
   "uid": "1eGFUaQiz",
-  "version": 2
+  "version": 1
 }
