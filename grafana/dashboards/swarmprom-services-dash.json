@@ -91,7 +91,7 @@
           "step": 2
         }
       ],
-      "thresholds": "8,9",
+      "thresholds": "1,9",
       "timeFrom": "1m",
       "title": "Nodes",
       "type": "singlestat",
