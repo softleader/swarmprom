@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 9336,
   "graphTooltip": 0,
-  "iteration": 1564104666521,
+  "iteration": 1564114225740,
   "links": [],
   "panels": [
     {
@@ -1601,13 +1601,13 @@
       "legend": {
         "alignAsTable": true,
         "avg": false,
-        "current": true,
+        "current": false,
         "max": false,
         "min": false,
         "rightSide": true,
         "show": true,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -1624,10 +1624,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(mssql_session_last_cpu_used{db=~\"$database_name\"}[$interval])) by(loginame, hostname)",
+          "expr": "sum(rate(mssql_session_last_cpu_used{db=~\"$database_name\"}[$interval])) by(loginame, hostname, program_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{loginame}}@{{hostname}}",
+          "legendFormat": "{{loginame}}@{{hostname}} [{{program_name}}]",
           "refId": "A"
         }
       ],
@@ -1713,17 +1713,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(mssql_session_read_write{db=~\"$database_name\", operation=\"num_reads\"}[$interval])) by(loginame, hostname)",
+          "expr": "sum(rate(mssql_session_read_write{db=~\"$database_name\", operation=\"num_reads\"}[$interval])) by(loginame, hostname, program_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "READ {{loginame}}@{{hostname}}",
+          "legendFormat": "READ {{loginame}}@{{hostname}} [{{program_name}}]",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(mssql_session_read_write{db=~\"$database_name\", operation=\"num_writes\"}[$interval])) by(loginame, hostname)",
+          "expr": "- sum(rate(mssql_session_read_write{db=~\"$database_name\", operation=\"num_writes\"}[$interval])) by(loginame, hostname, program_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "WRITE {{loginame}}@{{hostname}}",
+          "legendFormat": "WRITE {{loginame}}@{{hostname}} [{{program_name}}]",
           "refId": "B"
         }
       ],
@@ -1780,7 +1780,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "master",
           "value": "master"
         },
@@ -1822,13 +1821,13 @@
           },
           {
             "selected": false,
-            "text": "1s",
-            "value": "1s"
+            "text": "5s",
+            "value": "5s"
           },
           {
             "selected": false,
-            "text": "5s",
-            "value": "5s"
+            "text": "30s",
+            "value": "30s"
           },
           {
             "selected": false,
@@ -1856,7 +1855,7 @@
             "value": "1d"
           }
         ],
-        "query": "1s,5s,1m,5m,1h,6h,1d",
+        "query": "5s,30s,1m,5m,1h,6h,1d",
         "refresh": 2,
         "skipUrlSync": false,
         "type": "interval"
@@ -1896,5 +1895,5 @@
   "timezone": "browser",
   "title": "MSSQL Exporter",
   "uid": "TocpL9Lizd",
-  "version": 4
+  "version": 5
 }

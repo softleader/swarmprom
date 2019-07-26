@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 3333,
   "graphTooltip": 1,
-  "iteration": 1563938583029,
+  "iteration": 1564106058802,
   "links": [
     {
       "asDropdown": true,
@@ -206,7 +206,7 @@
           "calculatedInterval": "10m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "sum(rate(oracledb_activity_user_commits[$interval]))",
+          "expr": "sum(oracledb_session_blocked > bool 0)",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -217,7 +217,7 @@
         }
       ],
       "thresholds": "90,95",
-      "title": "user commits",
+      "title": "Deadlocks",
       "type": "singlestat",
       "valueFontSize": "100%",
       "valueMaps": [],
@@ -378,7 +378,7 @@
           "calculatedInterval": "10m",
           "datasourceErrors": {},
           "errors": {},
-          "expr": "sum(oracledb_sessions_activity{status=\"ACTIVE\"})",
+          "expr": "sum(oracledb_session_meta{status=\"ACTIVE\"})",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -589,9 +589,99 @@
       "fill": 1,
       "gridPos": {
         "h": 8,
-        "w": 12,
+        "w": 24,
         "x": 0,
         "y": 5
+      },
+      "id": 72,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {},
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(oracledb_session_cpu_used{status=\"ACTIVE\"}[$interval])) by(username, machine, program)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{username}}@{{machine}} [{{program}}]",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Session Cpu Used",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 13
       },
       "id": 71,
       "interval": "$interval",
@@ -681,7 +771,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 21
       },
       "id": 63,
       "panels": [],
@@ -704,7 +794,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 14
+        "y": 22
       },
       "id": 53,
       "legend": {
@@ -801,7 +891,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 14
+        "y": 22
       },
       "id": 54,
       "legend": {
@@ -898,7 +988,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 29
       },
       "id": 55,
       "legend": {
@@ -995,7 +1085,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 21
+        "y": 29
       },
       "id": 56,
       "legend": {
@@ -1092,7 +1182,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 36
       },
       "id": 59,
       "legend": {
@@ -1189,7 +1279,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 36
       },
       "id": 60,
       "legend": {
@@ -1282,7 +1372,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 43
       },
       "id": 65,
       "legend": {
@@ -1376,8 +1466,8 @@
         "auto_count": 200,
         "auto_min": "1s",
         "current": {
-          "text": "1m",
-          "value": "1m"
+          "text": "auto",
+          "value": "$__auto_interval_interval"
         },
         "datasource": "Promethus - Automation",
         "hide": 0,
@@ -1388,14 +1478,9 @@
         "name": "interval",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "auto",
             "value": "$__auto_interval_interval"
-          },
-          {
-            "selected": false,
-            "text": "1s",
-            "value": "1s"
           },
           {
             "selected": false,
@@ -1403,7 +1488,12 @@
             "value": "5s"
           },
           {
-            "selected": true,
+            "selected": false,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
             "text": "1m",
             "value": "1m"
           },
@@ -1428,7 +1518,7 @@
             "value": "1d"
           }
         ],
-        "query": "1s,5s,1m,5m,1h,6h,1d",
+        "query": "5s,30s,1m,5m,1h,6h,1d",
         "refresh": 2,
         "skipUrlSync": false,
         "type": "interval"
@@ -1473,5 +1563,5 @@
   "timezone": "browser",
   "title": "OracleDB(JasmineAH) Exporter",
   "uid": "1eGFUaQiz",
-  "version": 2
+  "version": 3
 }

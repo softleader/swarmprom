@@ -13,5 +13,5 @@ v$sesstat se,
 v$statname sn
 WHERE ss.username iS NOT NULL
 AND se.statistic# = sn.statistic#
-AND sn.name like '%CPU used by this session%'
+AND sn.name = 'CPU used by this session'
 AND se.sid = ss.sid
