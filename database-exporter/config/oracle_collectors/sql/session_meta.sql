@@ -3,7 +3,7 @@ ss.sid "sid",
 ss.username "username",
 ss.machine "machine",
 ss.program "program",
-ss.blocking_session "blocking_session",
+NVL(ss.blocking_session, 0) "blocking_session",
 ss.status "status",
 se.VALUE/100 "cpu_usage_seconds",
 1 "cnt_value"
