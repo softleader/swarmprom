@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1563790986356,
+  "iteration": 1564120057209,
   "links": [],
   "panels": [
     {
@@ -390,7 +390,7 @@
       "lines": false,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "null as zero",
       "options": {},
       "percentage": false,
       "pointradius": 5,
@@ -761,7 +761,7 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null as zero",
+      "nullPointMode": "null",
       "options": {},
       "percentage": false,
       "pointradius": 5,
@@ -1309,7 +1309,7 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null as zero",
+      "nullPointMode": "null",
       "options": {},
       "percentage": false,
       "pointradius": 5,
@@ -1676,8 +1676,8 @@
       {
         "allValue": ".+",
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "text": "xdu507kmi6o7j80zd098a9pzf",
+          "value": "xdu507kmi6o7j80zd098a9pzf"
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -1869,5 +1869,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 16
+  "version": 17
 }
