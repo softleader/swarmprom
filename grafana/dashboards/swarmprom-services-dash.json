@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1564120057221,
+  "iteration": 1564123134609,
   "links": [],
   "panels": [
     {
@@ -1052,7 +1052,7 @@
       "fill": 1,
       "gridPos": {
         "h": 7,
-        "w": 20,
+        "w": 24,
         "x": 0,
         "y": 42
       },
@@ -1147,6 +1147,98 @@
         "w": 24,
         "x": 0,
         "y": 49
+      },
+      "id": 39,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {},
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[30s]) / container_memory_max_usage_bytes)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{name}}",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory used % by Container (top 10)",
+      "tooltip": {
+        "shared": false,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 56
       },
       "id": 17,
       "legend": {
@@ -1243,7 +1335,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 63
       },
       "id": 36,
       "legend": {
@@ -1339,7 +1431,7 @@
         "h": 7,
         "w": 10,
         "x": 0,
-        "y": 65
+        "y": 72
       },
       "id": 31,
       "legend": {
@@ -1431,7 +1523,7 @@
         "h": 7,
         "w": 10,
         "x": 10,
-        "y": 65
+        "y": 72
       },
       "id": 26,
       "legend": {
@@ -1554,7 +1646,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 65
+        "y": 72
       },
       "id": 27,
       "interval": null,
@@ -1820,5 +1912,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 17
+  "version": 20
 }
