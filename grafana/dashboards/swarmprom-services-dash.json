@@ -16,13 +16,14 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1564133694601,
+  "iteration": 1564135782374,
   "links": [],
   "panels": [
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorValue": false,
+      "colorPostfix": false,
+      "colorValue": true,
       "colors": [
         "rgba(245, 54, 54, 0.9)",
         "rgba(237, 129, 40, 0.89)",
@@ -90,7 +91,7 @@
           "step": 2
         }
       ],
-      "thresholds": "",
+      "thresholds": "8,9",
       "timeFrom": "1m",
       "title": "Nodes",
       "type": "singlestat",
@@ -102,7 +103,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
       "cacheTimeout": null,
@@ -187,7 +188,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
       "cacheTimeout": null,
@@ -272,7 +273,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
       "cacheTimeout": null,
@@ -356,7 +357,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
       "cacheTimeout": null,
@@ -372,11 +373,12 @@
       "options": {
         "fieldOptions": {
           "calcs": [
-            "mean"
+            "last"
           ],
           "defaults": {
             "max": 100,
-            "min": 0
+            "min": 0,
+            "unit": "percent"
           },
           "mappings": [],
           "override": {},
@@ -432,11 +434,12 @@
       "options": {
         "fieldOptions": {
           "calcs": [
-            "mean"
+            "last"
           ],
           "defaults": {
             "max": 100,
-            "min": 0
+            "min": 0,
+            "unit": "percent"
           },
           "mappings": [],
           "override": {},
@@ -464,6 +467,8 @@
         "showThresholdMarkers": true
       },
       "pluginVersion": "6.2.5",
+      "repeat": null,
+      "repeatDirection": "h",
       "targets": [
         {
           "expr": "sum(node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) by(instance) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
@@ -1933,5 +1938,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 21
+  "version": 22
 }
