@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 3333,
   "graphTooltip": 1,
-  "iteration": 1564106058802,
+  "iteration": 1564119895020,
   "links": [
     {
       "asDropdown": true,
@@ -140,11 +140,11 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorValue": false,
+      "colorValue": true,
       "colors": [
-        "rgba(50, 172, 45, 0.97)",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(245, 54, 54, 0.9)"
+        "rgba(32, 33, 58, 0.9)",
+        "#508642",
+        "#bf1b00"
       ],
       "datasource": "Prometheus",
       "decimals": null,
@@ -216,10 +216,10 @@
           "step": 300
         }
       ],
-      "thresholds": "90,95",
+      "thresholds": "0,1",
       "title": "Deadlocks",
       "type": "singlestat",
-      "valueFontSize": "100%",
+      "valueFontSize": "80%",
       "valueMaps": [],
       "valueName": "current"
     },
@@ -1563,5 +1563,5 @@
   "timezone": "browser",
   "title": "OracleDB(JasmineAH) Exporter",
   "uid": "1eGFUaQiz",
-  "version": 3
+  "version": 4
 }
