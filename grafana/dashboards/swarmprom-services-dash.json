@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1564123134619,
+  "iteration": 1564133694553,
   "links": [],
   "panels": [
     {
@@ -1179,7 +1179,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[30s]) / container_memory_max_usage_bytes)",
+          "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[30s]) / container_spec_memory_limit_bytes)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{name}}",
@@ -1912,5 +1912,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 20
+  "version": 21
 }

@@ -199,9 +199,9 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          memory: 256M
         reservations:
-          memory: 64M
+          memory: 128M
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 5s
