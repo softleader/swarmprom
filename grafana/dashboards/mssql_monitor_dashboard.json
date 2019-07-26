@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 9336,
   "graphTooltip": 0,
-  "iteration": 1563959397585,
+  "iteration": 1564104666521,
   "links": [],
   "panels": [
     {
@@ -179,7 +179,7 @@
         "#bf1b00"
       ],
       "datasource": "Prometheus",
-      "description": "Number of lock requests per second that resulted in a deadlock since last restart",
+      "description": "",
       "editable": true,
       "error": false,
       "format": "none",
@@ -236,7 +236,7 @@
         {
           "alias": "",
           "dsType": "influxdb",
-          "expr": "sum(mssql_session_blocked)",
+          "expr": "sum(mssql_session_blocked > bool 0)",
           "format": "time_series",
           "groupBy": [],
           "intervalFactor": 2,
@@ -296,7 +296,7 @@
       ],
       "datasource": "Prometheus",
       "decimals": null,
-      "description": "Percentage of memory utilization",
+      "description": "",
       "editable": true,
       "error": false,
       "format": "none",
@@ -431,7 +431,7 @@
       ],
       "datasource": "Prometheus",
       "decimals": null,
-      "description": "Percentage of memory utilization",
+      "description": "",
       "editable": true,
       "error": false,
       "format": "none",
@@ -567,7 +567,7 @@
       ],
       "datasource": "Prometheus",
       "decimals": null,
-      "description": "Percentage of memory utilization",
+      "description": "",
       "editable": true,
       "error": false,
       "format": "none",
@@ -700,7 +700,7 @@
         "rgba(50, 172, 45, 0.97)"
       ],
       "datasource": "Prometheus",
-      "description": "Number of page faults since last restart",
+      "description": "",
       "editable": true,
       "error": false,
       "format": "none",
@@ -1002,7 +1002,7 @@
     {
       "columns": [],
       "datasource": "Prometheus",
-      "description": "Database Size information per instance",
+      "description": "",
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -1129,7 +1129,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Number of active connections",
+      "description": "",
       "editable": true,
       "error": false,
       "fill": 5,
@@ -1262,7 +1262,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Wait time (ms) of stall since last restart",
+      "description": "",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -1353,7 +1353,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Wait time (ms) of stall since last restart",
+      "description": "",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -1458,7 +1458,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Number of active connections",
+      "description": "",
       "editable": true,
       "error": false,
       "fill": 5,
@@ -1781,8 +1781,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "AzaleaCki",
-          "value": "AzaleaCki"
+          "text": "master",
+          "value": "master"
         },
         "datasource": "Prometheus",
         "definition": "mssql_database_size",
@@ -1896,5 +1896,5 @@
   "timezone": "browser",
   "title": "MSSQL Exporter",
   "uid": "TocpL9Lizd",
-  "version": 2
+  "version": 4
 }
