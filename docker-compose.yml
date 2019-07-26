@@ -53,9 +53,9 @@ services:
       mode: global
       resources:
         limits:
-          memory: 128M
+          memory: 256M
         reservations:
-          memory: 64M
+          memory: 128M
 
   grafana:
     image: softleader/swarmprom-grafana:6.2.5
