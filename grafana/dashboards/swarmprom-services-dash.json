@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1566441584348,
+  "iteration": 1566441584422,
   "links": [],
   "panels": [
     {
@@ -533,8 +533,8 @@
         {
           "expr": "round(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
-          "interval": "1m",
-          "intervalFactor": 10,
+          "interval": "$interval",
+          "intervalFactor": 5,
           "legendFormat": "{{ node_name }}",
           "refId": "A",
           "step": 10
@@ -632,8 +632,8 @@
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "interval": "1m",
-          "intervalFactor": 10,
+          "interval": "$interval",
+          "intervalFactor": 5,
           "legendFormat": "{{ container_label_com_docker_stack_namespace }}",
           "refId": "A",
           "step": 10
@@ -1105,7 +1105,7 @@
           "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval]))",
           "format": "time_series",
           "instant": false,
-          "intervalFactor": 1,
+          "intervalFactor": 3,
           "legendFormat": "{{name}}",
           "refId": "A",
           "step": 2
@@ -1758,14 +1758,14 @@
         "sort": 0,
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
+          "sladmin-76",
           "swarm-worker-96",
+          "sladmin73",
           "swarm-master-60",
           "sladmin-91",
           "sladmin-92",
           "swarm-worker-97",
           "swarm-worker-95",
-          "sladmin73",
-          "sladmin-76",
           "sleader74"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
