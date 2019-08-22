@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1564135782374,
+  "iteration": 1566441584326,
   "links": [],
   "panels": [
     {
@@ -430,6 +430,7 @@
         "y": 9
       },
       "id": 8,
+      "interval": "",
       "links": [],
       "options": {
         "fieldOptions": {
@@ -473,12 +474,15 @@
         {
           "expr": "sum(node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) by(instance) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
           "format": "time_series",
-          "intervalFactor": 2,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "A",
           "step": 20
         }
       ],
+      "timeFrom": null,
       "title": "Available Memory",
       "type": "gauge"
     },
@@ -1938,5 +1942,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 22
+  "version": 23
 }
