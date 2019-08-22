@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1566441584326,
+  "iteration": 1566441584348,
   "links": [],
   "panels": [
     {
@@ -474,7 +474,7 @@
         {
           "expr": "sum(node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) by(instance) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
           "format": "time_series",
-          "instant": true,
+          "instant": false,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
@@ -1104,7 +1104,8 @@
         {
           "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval]))",
           "format": "time_series",
-          "intervalFactor": 2,
+          "instant": false,
+          "intervalFactor": 1,
           "legendFormat": "{{name}}",
           "refId": "A",
           "step": 2
