@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1563791284007,
+  "iteration": 1566797739386,
   "links": [],
   "panels": [
     {
@@ -1410,14 +1410,14 @@
             },
             "reducer": {
               "params": [],
-              "type": "avg"
+              "type": "last"
             },
             "type": "query"
           }
         ],
         "executionErrorState": "alerting",
         "for": "0m",
-        "frequency": "2m",
+        "frequency": "5m",
         "handler": 1,
         "name": "Disk usage Over 50%",
         "noDataState": "no_data",
@@ -1469,7 +1469,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(1 - (node_filesystem_free_bytes{mountpoint=\"/\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/\"}) * on(instance) group_left(node_name) node_meta{node_id=~\".*\"})",
+          "expr": "sum((1 - (node_filesystem_free_bytes{mountpoint=\"/\"} / on(instance, device) node_filesystem_size_bytes{mountpoint=\"/\"}) * on(instance) group_left(node_name) node_meta{node_id=~\".*\"})) by (device, node_name)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2386,14 +2386,14 @@
         "sort": 0,
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
-          "swarm-worker-96",
+          "sladmin-76",
+          "sladmin73",
           "swarm-master-60",
           "sladmin-91",
           "sladmin-92",
           "swarm-worker-97",
           "swarm-worker-95",
-          "sladmin73",
-          "sladmin-76",
+          "swarm-worker-96",
           "sleader74"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
@@ -2507,5 +2507,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 19
+  "version": 20
 }
