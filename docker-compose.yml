@@ -150,7 +150,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: softleader/swarmprom-prometheus:2.11.1-5
+    image: softleader/swarmprom-prometheus:2.11.1-8
     networks:
       - net
     command:
@@ -177,11 +177,30 @@ services:
         reservations:
           memory: 128M
 
+  pushgateway:
+    image: prom/pushgateway
+    networks:
+      - net      
+    ports:
+      - "9091:9091"
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 128M
+
   caddy:
     image: stefanprodan/caddy
     ports:
       - "23000:3000"
       - "29090:9090"
+      - "29091:9091"
       - "29093:9093"
       - "29094:9094"
     networks:

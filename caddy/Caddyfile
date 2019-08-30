@@ -8,6 +8,16 @@
     tls off
 }
 
+:9091 {
+    basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
+    proxy / pushgateway:9091 {
+            transparent
+        }
+
+    errors stderr
+    tls off
+}
+
 :9093 {
     basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
     proxy / alertmanager:9093 {

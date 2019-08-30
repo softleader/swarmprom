@@ -27,6 +27,12 @@ scrape_configs:
 #      type: 'A'
 #      port: 9323
 
+  - job_name: 'pushgateway'
+    static_configs:
+      - targets: ['pushgateway:9091']
+        labels:
+          instance: pushgateway
+
   - job_name: 'cadvisor'
     dns_sd_configs:
     - names:
