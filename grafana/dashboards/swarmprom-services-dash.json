@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1567492224780,
+  "iteration": 1567492224848,
   "links": [],
   "panels": [
     {
@@ -408,7 +408,7 @@
       "pluginVersion": "6.2.5",
       "targets": [
         {
-          "expr": "(sum(irate(node_cpu_seconds_total{mode=\"idle\"}[30s])) by(instance) / count(node_cpu_seconds_total{mode=\"user\"}) by(instance)) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
+          "expr": "(sum(irate(node_cpu_seconds_total{mode=\"idle\"}[1m])) by(instance) / count(node_cpu_seconds_total{mode=\"user\"}) by(instance)) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
@@ -1728,7 +1728,7 @@
       "valueName": "avg"
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [
@@ -1912,7 +1912,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
