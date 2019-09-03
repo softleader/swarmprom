@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1566441584422,
+  "iteration": 1567492224780,
   "links": [],
   "panels": [
     {
@@ -410,13 +410,13 @@
         {
           "expr": "(sum(irate(node_cpu_seconds_total{mode=\"idle\"}[30s])) by(instance) / count(node_cpu_seconds_total{mode=\"user\"}) by(instance)) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
           "format": "time_series",
-          "intervalFactor": 1,
+          "intervalFactor": 2,
           "legendFormat": "{{node_name}}",
           "refId": "A",
           "step": 2
         }
       ],
-      "timeFrom": "5s",
+      "timeFrom": "1m",
       "timeShift": null,
       "title": "CPU Idle",
       "type": "gauge"
@@ -482,8 +482,7 @@
           "step": 20
         }
       ],
-      "timeFrom": "5s",
-      "timeShift": null,
+      "timeFrom": null,
       "title": "Available Memory",
       "type": "gauge"
     },
@@ -534,8 +533,8 @@
         {
           "expr": "round(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
           "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 5,
+          "interval": "1m",
+          "intervalFactor": 10,
           "legendFormat": "{{ node_name }}",
           "refId": "A",
           "step": 10
@@ -633,8 +632,8 @@
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "interval": "$interval",
-          "intervalFactor": 5,
+          "interval": "1m",
+          "intervalFactor": 10,
           "legendFormat": "{{ container_label_com_docker_stack_namespace }}",
           "refId": "A",
           "step": 10
@@ -1105,8 +1104,7 @@
         {
           "expr": "topk(10, avg_over_time(container_memory_usage_bytes{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\", id=~\"/docker/.*\"}[$interval]))",
           "format": "time_series",
-          "instant": false,
-          "intervalFactor": 3,
+          "intervalFactor": 2,
           "legendFormat": "{{name}}",
           "refId": "A",
           "step": 2
@@ -1760,13 +1758,14 @@
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
           "sladmin-76",
-          "swarm-worker-96",
           "sladmin73",
           "swarm-master-60",
           "sladmin-91",
           "sladmin-92",
           "swarm-worker-97",
           "swarm-worker-95",
+          "swarm-worker-51",
+          "swarm-worker-96",
           "sleader74"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
@@ -1944,5 +1943,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 23
+  "version": 24
 }
