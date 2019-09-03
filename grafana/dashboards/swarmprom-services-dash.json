@@ -410,7 +410,7 @@
         {
           "expr": "(sum(irate(node_cpu_seconds_total{mode=\"idle\"}[30s])) by(instance) / count(node_cpu_seconds_total{mode=\"user\"}) by(instance)) * on(instance) group_left(node_name) node_meta{node_id=~\".+\"} * 100",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "A",
           "step": 2
