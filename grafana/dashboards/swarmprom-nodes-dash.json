@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1566797739386,
+  "iteration": 1567656257926,
   "links": [],
   "panels": [
     {
@@ -1773,7 +1773,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (node_id, node_name, container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1783,7 +1783,7 @@
           "refId": "A"
         },
         {
-          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (node_id, node_name, container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2067,7 +2067,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[30s]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by(node_name)",
+          "expr": "sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\"}[30s]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta{node_id=~\"$node_id\"}) by (node_id, node_name, container_label_com_docker_swarm_node_id))) by(node_name)",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
@@ -2241,7 +2241,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta) by (node_name)",
+          "expr": "sum(rate(container_network_receive_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (node_id, node_name, container_label_com_docker_swarm_node_id))) by (node_name)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "IN {{node_name}}",
@@ -2249,7 +2249,7 @@
           "step": 2
         },
         {
-          "expr": "- sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta) by (node_name)",
+          "expr": "- sum(rate(container_network_transmit_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\"}[$interval]) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (node_id, node_name, container_label_com_docker_swarm_node_id))) by (node_name)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -2393,6 +2393,7 @@
           "sladmin-92",
           "swarm-worker-97",
           "swarm-worker-95",
+          "swarm-worker-51",
           "swarm-worker-96",
           "sleader74"
         ],
@@ -2507,5 +2508,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 20
+  "version": 21
 }
