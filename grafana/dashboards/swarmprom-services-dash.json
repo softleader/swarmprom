@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1567652467936,
+  "iteration": 1567655167517,
   "links": [],
   "panels": [
     {
@@ -531,7 +531,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "round(sum(rate(container_last_seen{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[1m])) by (container_label_com_docker_swarm_node_id)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (container_label_com_docker_swarm_node_id, node_name))",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 10,
@@ -1382,7 +1382,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "(sum(irate(container_fs_reads_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (node_name, container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 2,
@@ -1390,7 +1390,7 @@
           "refId": "A"
         },
         {
-          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) node_meta",
+          "expr": "- (sum(irate(container_fs_writes_bytes_total{container_label_com_docker_swarm_node_id=~\"$node_id\", container_label_com_docker_stack_namespace=~\"$stack\", container_label_com_docker_swarm_service_name=~\"$service\"}[$interval])) by (container_label_com_docker_swarm_node_id, container_label_com_docker_swarm_service_name)) * on(container_label_com_docker_swarm_node_id) group_left(node_name) (max(node_meta) by (node_name, container_label_com_docker_swarm_node_id))",
           "format": "time_series",
           "interval": "1m",
           "intervalFactor": 2,
@@ -1739,7 +1739,6 @@
       {
         "allValue": ".+",
         "current": {
-          "selected": true,
           "text": "All",
           "value": "$__all"
         },
@@ -1859,6 +1858,7 @@
       {
         "allValue": ".+",
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -1944,5 +1944,5 @@
   "timezone": "",
   "title": "Docker Swarm Services",
   "uid": "zr_baSRmk",
-  "version": 26
+  "version": 27
 }
