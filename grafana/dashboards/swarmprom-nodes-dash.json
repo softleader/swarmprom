@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1567656257926,
+  "iteration": 1575452540385,
   "links": [],
   "panels": [
     {
@@ -1421,7 +1421,11 @@
         "handler": 1,
         "name": "Disk usage Over 50%",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "N3Xl9O-Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2391,11 +2395,11 @@
           "swarm-master-60",
           "sladmin-91",
           "sladmin-92",
-          "swarm-worker-97",
           "swarm-worker-95",
           "swarm-worker-51",
           "swarm-worker-96",
-          "sleader74"
+          "sleader74",
+          "swarm-worker-97"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
         "type": "query",
@@ -2508,5 +2512,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 21
+  "version": 1
 }
