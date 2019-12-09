@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1575452540385,
+  "iteration": 1575510903145,
   "links": [],
   "panels": [
     {
@@ -1421,11 +1421,7 @@
         "handler": 1,
         "name": "Disk usage Over 50%",
         "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "N3Xl9O-Wk"
-          }
-        ]
+        "notifications": []
       },
       "aliasColors": {},
       "bars": false,
@@ -2512,5 +2508,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 1
+  "version": 2
 }
