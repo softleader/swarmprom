@@ -160,7 +160,7 @@
           {
             "evaluator": {
               "params": [
-                0.9
+                9.9
               ],
               "type": "lt"
             },
@@ -176,7 +176,7 @@
             },
             "reducer": {
               "params": [],
-              "type": "avg"
+              "type": "last"
             },
             "type": "query"
           }
@@ -186,7 +186,7 @@
         "frequency": "1m",
         "handler": 1,
         "name": "Nodes healthy alert",
-        "noDataState": "no_data",
+        "noDataState": "alerting",
         "notifications": [
           {
             "uid": "N3Xl9O-Wk"
@@ -230,10 +230,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "count(node_meta) by (node_name)",
+          "expr": "count(node_meta)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "Node count",
           "refId": "A"
         }
       ],
@@ -243,7 +243,7 @@
           "fill": true,
           "line": true,
           "op": "lt",
-          "value": 0.9
+          "value": 9.9
         }
       ],
       "timeFrom": null,
@@ -269,7 +269,7 @@
           "label": null,
           "logBase": 1,
           "max": "10",
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -434,7 +434,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [],
@@ -473,5 +473,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 12
+  "version": 21
 }
