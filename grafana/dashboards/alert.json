@@ -111,7 +111,8 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 75
+          "value": 75,
+          "yaxis": "left"
         }
       ],
       "timeFrom": null,
@@ -133,8 +134,9 @@
       },
       "yaxes": [
         {
-          "format": "short",
-          "label": null,
+          "decimals": 1,
+          "format": "percent",
+          "label": "",
           "logBase": 1,
           "max": "100",
           "min": null,
@@ -160,7 +162,7 @@
           {
             "evaluator": {
               "params": [
-                9.9
+                1
               ],
               "type": "lt"
             },
@@ -169,7 +171,214 @@
             },
             "query": {
               "params": [
-                "A",
+                "B",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "C",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "D",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "E",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "F",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "G",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "H",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "I",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "J",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "K",
                 "5m",
                 "now"
               ]
@@ -182,7 +391,7 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "1m",
+        "for": "15s",
         "frequency": "1m",
         "handler": 1,
         "name": "Nodes healthy alert",
@@ -211,6 +420,7 @@
         "current": false,
         "max": false,
         "min": false,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": false
@@ -221,6 +431,7 @@
       "nullPointMode": "null as zero",
       "options": {},
       "percentage": false,
+      "pluginVersion": "6.2.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -230,11 +441,74 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "count(node_meta)",
+          "expr": "count(node_meta{node_name=\"sladmin73\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Node count",
-          "refId": "A"
+          "legendFormat": "{{node_name}}",
+          "refId": "B"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"sleader74\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "C"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"swarm-master-60\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "D"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"swarm-worker-95\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "E"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"swarm-worker-96\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "F"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"swarm-worker-97\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "G"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"sladmin-91\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "H"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"sladmin-92\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "I"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"sladmin-76\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "J"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"swarm-worker-51\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "K"
         }
       ],
       "thresholds": [
@@ -243,7 +517,7 @@
           "fill": true,
           "line": true,
           "op": "lt",
-          "value": 9.9
+          "value": 1
         }
       ],
       "timeFrom": null,
@@ -411,8 +685,9 @@
       },
       "yaxes": [
         {
+          "decimals": 1,
           "format": "percentunit",
-          "label": null,
+          "label": "",
           "logBase": 1,
           "max": "1",
           "min": "0",
@@ -473,5 +748,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 21
+  "version": 28
 }
