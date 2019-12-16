@@ -187,7 +187,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -210,7 +210,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -233,7 +233,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -256,7 +256,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -279,7 +279,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -302,7 +302,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -325,7 +325,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -348,7 +348,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -371,7 +371,7 @@
               "params": [
                 1
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -521,8 +521,7 @@
           "fill": true,
           "line": true,
           "op": "lt",
-          "value": 1,
-          "yaxis": "left"
+          "value": 1
         }
       ],
       "timeFrom": null,
@@ -723,7 +722,7 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -754,5 +753,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 29
+  "version": 30
 }
