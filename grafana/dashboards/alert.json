@@ -161,10 +161,8 @@
         "conditions": [
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "and"
@@ -184,10 +182,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -207,10 +203,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -230,10 +224,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -253,10 +245,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -276,10 +266,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -299,10 +287,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -322,10 +308,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -345,10 +329,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -368,10 +350,8 @@
           },
           {
             "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
+              "params": [],
+              "type": "no_value"
             },
             "operator": {
               "type": "or"
@@ -515,15 +495,7 @@
           "refId": "K"
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 1
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -722,7 +694,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -753,5 +725,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 30
+  "version": 32
 }
