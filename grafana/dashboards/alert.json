@@ -170,7 +170,7 @@
             "query": {
               "params": [
                 "B",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -191,7 +191,7 @@
             "query": {
               "params": [
                 "C",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -212,7 +212,7 @@
             "query": {
               "params": [
                 "D",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -233,7 +233,7 @@
             "query": {
               "params": [
                 "E",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -254,7 +254,7 @@
             "query": {
               "params": [
                 "F",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -275,7 +275,7 @@
             "query": {
               "params": [
                 "G",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -296,7 +296,7 @@
             "query": {
               "params": [
                 "H",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -317,7 +317,7 @@
             "query": {
               "params": [
                 "I",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -338,7 +338,7 @@
             "query": {
               "params": [
                 "J",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -359,7 +359,7 @@
             "query": {
               "params": [
                 "K",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -374,6 +374,7 @@
         "for": "15s",
         "frequency": "1m",
         "handler": 1,
+        "message": "Node is down",
         "name": "Nodes healthy alert",
         "noDataState": "alerting",
         "notifications": [
@@ -428,42 +429,42 @@
           "expr": "count(node_meta{node_name=\"sladmin73\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "sladmin73",
           "refId": "B"
         },
         {
           "expr": "count(node_meta{node_name=\"sleader74\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "sleader74",
           "refId": "C"
         },
         {
           "expr": "count(node_meta{node_name=\"swarm-master-60\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "swarm-master-60",
           "refId": "D"
         },
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-95\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "swarm-worker-95",
           "refId": "E"
         },
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-96\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "swarm-worker-96",
           "refId": "F"
         },
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-97\"}) by (node_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
+          "legendFormat": "swarm-worker-97",
           "refId": "G"
         },
         {
@@ -694,7 +695,7 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -725,5 +726,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 32
+  "version": 33
 }
