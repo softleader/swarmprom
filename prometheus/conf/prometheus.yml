@@ -41,18 +41,18 @@ scrape_configs:
       type: 'A'
       port: 9100
 
-  - job_name: 'mssql-exporter'
-    dns_sd_configs:
-      - names:
-          - 'tasks.mssql-exporter'
-        type: 'A'
-        port: 9285
+#  - job_name: 'mssql-exporter'
+#    dns_sd_configs:
+#      - names:
+#          - 'tasks.mssql-exporter'
+#        type: 'A'
+#        port: 9285
 
-  - job_name: 'oracle-exporter'
-    dns_sd_configs:
-      - names:
-          - 'tasks.oracle-exporter'
-        type: 'A'
-        port: 9285
+#  - job_name: 'oracle-exporter'
+#    dns_sd_configs:
+#      - names:
+#          - 'tasks.oracle-exporter'
+#        type: 'A'
+#        port: 9285
 
 
