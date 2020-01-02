@@ -150,7 +150,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: softleader/swarmprom-prometheus:2.11.1-5
+    image: softleader/swarmprom-prometheus:2.11.1-6
     networks:
       - net
     command:
