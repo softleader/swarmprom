@@ -63,6 +63,9 @@
         "noDataState": "no_data",
         "notifications": [
           {
+            "uid": "7LJcHl-Wz"
+          },
+          {
             "uid": "N3Xl9O-Wk"
           }
         ]
@@ -387,6 +390,9 @@
         "name": "Nodes healthy alert",
         "noDataState": "alerting",
         "notifications": [
+          {
+            "uid": "7LJcHl-Wz"
+          },
           {
             "uid": "N3Xl9O-Wk"
           }
@@ -742,6 +748,88 @@
       }
     },
     {
+      "alert": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1024
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "diff"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "1m",
+        "frequency": "30s",
+        "handler": 1,
+        "name": "jasmine-v25_schedule health alert",
+        "noDataState": "alerting",
+        "notifications": [
+          {
+            "uid": "7LJcHl-Wz"
+          }
+        ]
+      },
       "aliasColors": {},
       "bars": false,
       "cacheTimeout": null,
@@ -803,7 +891,15 @@
           "refId": "B"
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": 1024
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -880,6 +976,9 @@
         "noDataState": "no_data",
         "notifications": [
           {
+            "uid": "7LJcHl-Wz"
+          },
+          {
             "uid": "N3Xl9O-Wk"
           }
         ]
@@ -947,8 +1046,7 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 0.5,
-          "yaxis": "left"
+          "value": 0.5
         }
       ],
       "timeFrom": null,
@@ -1002,7 +1100,7 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -1033,5 +1131,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 38
+  "version": 39
 }
