@@ -380,6 +380,27 @@
               "type": "last"
             },
             "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
           }
         ],
         "executionErrorState": "alerting",
@@ -509,6 +530,13 @@
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "K"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"swarm-worker-62\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -535,7 +563,7 @@
           "format": "none",
           "label": null,
           "logBase": 1,
-          "max": "10",
+          "max": "11",
           "min": "0",
           "show": true
         },
@@ -1131,5 +1159,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 39
+  "version": 40
 }
