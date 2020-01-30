@@ -113,42 +113,6 @@ services:
         reservations:
           memory: 64M
 
-  mssql-exporter:
-    image: softleader/database-exporter:0.0.19
-    networks:
-      - net
-    volumes:
-      - ./database-exporter/config/mssql_exporter.yml:/exporter/mssql_exporter.yml
-    command:
-      - "-logtostderr=true"
-      - "-config.file=mssql_exporter.yml"
-    deploy:
-      mode: replicated
-      replicas: 1
-      resources:
-        limits:
-          memory: 128M
-        reservations:
-          memory: 64M
-
-  oracle-exporter:
-    image: softleader/database-exporter:0.0.24
-    networks:
-      - net
-    volumes:
-      - ./database-exporter/config/oracle_exporter.yml:/exporter/oracle_exporter.yml
-    command:
-      - "-logtostderr=true"
-      - "-config.file=oracle_exporter.yml"
-    deploy:
-      mode: replicated
-      replicas: 1
-      resources:
-        limits:
-          memory: 128M
-        reservations:
-          memory: 64M
-
   prometheus:
     image: softleader/swarmprom-prometheus:2.11.1-6
     networks:
