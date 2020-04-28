@@ -203,7 +203,11 @@
         "handler": 1,
         "name": "Kibana service health",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -351,7 +355,11 @@
         "handler": 1,
         "name": "Sinopia service health",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -499,7 +507,11 @@
         "handler": 1,
         "name": "Jenkins-SIT service health",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -647,7 +659,11 @@
         "handler": 1,
         "name": "Jenkins-RD service health",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -795,7 +811,11 @@
         "handler": 1,
         "name": "Softleader-Leave service health",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -943,7 +963,11 @@
         "handler": 1,
         "name": "MailBot service health",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -1091,7 +1115,11 @@
         "handler": 1,
         "name": "HrBot alert",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -1586,6 +1614,9 @@
           },
           {
             "uid": "N3Xl9O-Wk"
+          },
+          {
+            "uid": "sV1iEm6Wk"
           }
         ]
       },
