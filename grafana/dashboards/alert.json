@@ -262,7 +262,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Kibana",
+      "title": "Kibana(71)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -414,7 +414,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Sinopia",
+      "title": "Sinopia(77)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -566,7 +566,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Jenkins-SIT",
+      "title": "Jenkins-SIT(AWS)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -718,7 +718,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Jenkins-RD",
+      "title": "Jenkins-RD(77)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -870,7 +870,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Softleader-Leave",
+      "title": "Softleader-Leave(AWS)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2409,8 +2409,7 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 3,
-          "yaxis": "left"
+          "value": 3
         }
       ],
       "timeFrom": null,
@@ -2463,7 +2462,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -2494,5 +2493,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 45
+  "version": 46
 }
