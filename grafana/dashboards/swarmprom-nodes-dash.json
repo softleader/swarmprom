@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1576133883014,
+  "iteration": 1588045215027,
   "links": [],
   "panels": [
     {
@@ -1389,44 +1389,6 @@
       }
     },
     {
-      "alert": {
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                0.5
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "0m",
-        "frequency": "5m",
-        "handler": 1,
-        "name": "Disk usage Over 50%",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "N3Xl9O-Wk"
-          }
-        ]
-      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1484,15 +1446,7 @@
           "step": 2
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 0.5
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -2390,15 +2344,16 @@
         "sort": 0,
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
-          "sladmin-76",
           "sladmin73",
           "swarm-master-60",
           "sladmin-91",
           "sladmin-92",
           "swarm-worker-95",
           "swarm-worker-51",
-          "swarm-worker-96",
+          "sladmin-76",
           "sleader74",
+          "swarm-worker-96",
+          "swarm-worker-62",
           "swarm-worker-97"
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
@@ -2512,5 +2467,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 2
+  "version": 3
 }
