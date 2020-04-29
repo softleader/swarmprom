@@ -15,6 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
+  "iteration": 1588131070474,
   "links": [],
   "panels": [
     {
@@ -69,6 +70,7 @@
           "expr": "avg_over_time(probe_success{instance=\"http://softleader.com.tw:15601/app/kibana\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "kibana",
           "refId": "A"
@@ -77,6 +79,7 @@
           "expr": "avg_over_time(probe_success{instance=\"http://softleader.com.tw:44873\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Sinopia",
           "refId": "B"
@@ -85,6 +88,7 @@
           "expr": "avg_over_time(probe_success{instance=\"https://jenkins.softleader.com.tw\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Jenkins-SIT",
           "refId": "C"
@@ -93,6 +97,7 @@
           "expr": "avg_over_time(probe_success{instance=\"http://192.168.1.77:18080/login\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Jenkins-RD",
           "refId": "D"
@@ -101,6 +106,7 @@
           "expr": "avg_over_time(probe_success{instance=\"https://support.softleader.com.tw/leave\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Softleader-Leave",
           "refId": "E"
@@ -109,6 +115,7 @@
           "expr": "avg_over_time(probe_success{instance=\"http://softleader.com.tw:30550/health\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "MailBot",
           "refId": "F"
@@ -117,6 +124,7 @@
           "expr": "avg_over_time(probe_success{instance=\"http://softleader.com.tw:30549/health\"}[5m])",
           "format": "heatmap",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "HrBot",
           "refId": "G"
@@ -129,7 +137,7 @@
         "show": true,
         "showHistogram": false
       },
-      "tooltipDecimals": 1,
+      "tooltipDecimals": 2,
       "type": "heatmap",
       "xAxis": {
         "show": true
@@ -137,7 +145,7 @@
       "xBucketNumber": null,
       "xBucketSize": null,
       "yAxis": {
-        "decimals": 1,
+        "decimals": 2,
         "format": "short",
         "logBase": 1,
         "max": null,
@@ -253,6 +261,7 @@
           "expr": "probe_success{instance=\"http://softleader.com.tw:15601/app/kibana\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "kibana",
           "refId": "A"
@@ -405,6 +414,7 @@
           "expr": "probe_success{instance=\"http://softleader.com.tw:44873\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Sinopia",
           "refId": "A"
@@ -557,6 +567,7 @@
           "expr": "probe_success{instance=\"https://jenkins.softleader.com.tw\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Jenkins-SIT",
           "refId": "A"
@@ -709,6 +720,7 @@
           "expr": "probe_success{instance=\"http://192.168.1.77:18080/login\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Jenkins-RD",
           "refId": "A"
@@ -861,6 +873,7 @@
           "expr": "probe_success{instance=\"https://support.softleader.com.tw/leave\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "Softleader-Leave",
           "refId": "A"
@@ -1013,6 +1026,7 @@
           "expr": "probe_success{instance=\"http://softleader.com.tw:30550/health\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "MailBot",
           "refId": "A"
@@ -1165,6 +1179,7 @@
           "expr": "probe_success{instance=\"http://softleader.com.tw:30549/health\"}",
           "format": "time_series",
           "instant": false,
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "HrBot",
           "refId": "A"
@@ -1665,6 +1680,7 @@
         {
           "expr": "count(node_meta{node_name=\"sladmin73\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "sladmin73",
           "refId": "B"
@@ -1672,6 +1688,7 @@
         {
           "expr": "count(node_meta{node_name=\"sleader74\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "sleader74",
           "refId": "C"
@@ -1679,6 +1696,7 @@
         {
           "expr": "count(node_meta{node_name=\"swarm-master-60\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "swarm-master-60",
           "refId": "D"
@@ -1686,6 +1704,7 @@
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-95\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "swarm-worker-95",
           "refId": "E"
@@ -1693,6 +1712,7 @@
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-96\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "swarm-worker-96",
           "refId": "F"
@@ -1700,6 +1720,7 @@
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-97\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "swarm-worker-97",
           "refId": "G"
@@ -1707,6 +1728,7 @@
         {
           "expr": "count(node_meta{node_name=\"sladmin-91\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "H"
@@ -1714,6 +1736,7 @@
         {
           "expr": "count(node_meta{node_name=\"sladmin-92\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "I"
@@ -1721,6 +1744,7 @@
         {
           "expr": "count(node_meta{node_name=\"sladmin-76\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "J"
@@ -1728,6 +1752,7 @@
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-51\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "K"
@@ -1735,6 +1760,7 @@
         {
           "expr": "count(node_meta{node_name=\"swarm-worker-62\"}) by (node_name)",
           "format": "time_series",
+          "interval": "$interval",
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "A"
@@ -2393,11 +2419,12 @@
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": false,
+      "steppedLine": true,
       "targets": [
         {
           "expr": "count((sum(irate(container_cpu_usage_seconds_total{id=~\"/docker/.*\"}[10m])) by (name, container_label_com_docker_swarm_service_name)) > 0.5) by (container_label_com_docker_swarm_service_name) > 1",
           "format": "time_series",
+          "interval": "5m",
           "intervalFactor": 1,
           "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
           "refId": "A"
@@ -2409,7 +2436,8 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 3
+          "value": 3,
+          "yaxis": "left"
         }
       ],
       "timeFrom": null,
@@ -2459,7 +2487,86 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "auto": true,
+        "auto_count": 100,
+        "auto_min": "15s",
+        "current": {
+          "text": "auto",
+          "value": "$__auto_interval_interval"
+        },
+        "hide": 0,
+        "label": "Interval",
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": false,
+            "text": "15s",
+            "value": "15s"
+          },
+          {
+            "selected": false,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "3m",
+            "value": "3m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "3h",
+            "value": "3h"
+          },
+          {
+            "selected": false,
+            "text": "5h",
+            "value": "5h"
+          },
+          {
+            "selected": false,
+            "text": "10h",
+            "value": "10h"
+          }
+        ],
+        "query": "15s,30s,1m,3m,5m,10m,30m,1h,3h,5h,10h",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
   },
   "time": {
     "from": "now-24h",
@@ -2493,5 +2600,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 47
+  "version": 48
 }
