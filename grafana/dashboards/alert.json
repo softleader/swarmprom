@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1588131070474,
+  "iteration": 1588131514710,
   "links": [],
   "panels": [
     {
@@ -58,6 +58,7 @@
       "hideZeroBuckets": false,
       "highlightCards": true,
       "id": 15,
+      "interval": "15s",
       "legend": {
         "show": true
       },
@@ -231,6 +232,7 @@
         "y": 6
       },
       "id": 17,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -384,6 +386,7 @@
         "y": 6
       },
       "id": 18,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -537,6 +540,7 @@
         "y": 6
       },
       "id": 19,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -690,6 +694,7 @@
         "y": 6
       },
       "id": 20,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -843,6 +848,7 @@
         "y": 6
       },
       "id": 21,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -996,6 +1002,7 @@
         "y": 6
       },
       "id": 22,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -1149,6 +1156,7 @@
         "y": 6
       },
       "id": 23,
+      "interval": "15s",
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -2600,5 +2608,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 48
+  "version": 49
 }
