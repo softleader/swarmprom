@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1588131514710,
+  "iteration": 1588729403156,
   "links": [],
   "panels": [
     {
@@ -2430,7 +2430,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "count((sum(irate(container_cpu_usage_seconds_total{id=~\"/docker/.*\"}[10m])) by (name, container_label_com_docker_swarm_service_name)) > 0.5) by (container_label_com_docker_swarm_service_name) > 1",
+          "expr": "count(irate(container_cpu_usage_seconds_total{id=~\"/docker/.*\"}[10m]) > 0.5) by (container_label_com_docker_swarm_service_name) > 1",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -2608,5 +2608,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 49
+  "version": 50
 }
