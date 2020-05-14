@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1589179176792,
+  "iteration": 1589424417974,
   "links": [],
   "panels": [
     {
@@ -396,7 +396,7 @@
       "reverseYBuckets": false,
       "targets": [
         {
-          "expr": "node_load1 * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}",
+          "expr": "sum(node_load1 * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
           "format": "time_series",
           "instant": false,
           "interval": "$interval",
@@ -2447,5 +2447,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 6
+  "version": 7
 }
