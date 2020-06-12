@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1591692478799,
+  "iteration": 1591927315887,
   "links": [],
   "panels": [
     {
@@ -2565,6 +2565,7 @@
         "y": 30
       },
       "id": 25,
+      "interval": "",
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -2596,7 +2597,7 @@
           "expr": "changes((count(count_over_time(container_last_seen{id=~\"/docker/.*\", container_label_com_docker_stack_namespace!=\"docker-swarm-prom\", container_label_com_docker_stack_namespace!=\"fluent-bit\"}[10m])) by (container_label_com_docker_swarm_service_name) > 1)[10m:])",
           "format": "time_series",
           "hide": false,
-          "interval": "5m",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
           "refId": "A"
@@ -2612,7 +2613,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
+      "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
       "title": "Restart over 2 times in 10 min",
@@ -2772,5 +2773,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 52
+  "version": 53
 }
