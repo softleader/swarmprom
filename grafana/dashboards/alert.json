@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1590126885865,
+  "iteration": 1591692478799,
   "links": [],
   "panels": [
     {
@@ -2546,7 +2546,7 @@
         ],
         "executionErrorState": "alerting",
         "for": "30s",
-        "frequency": "1m",
+        "frequency": "30s",
         "handler": 1,
         "message": "RPC重啟次數在10分鐘內超過4次, 請確認服務是否正在不正常重啟",
         "name": "RPC重啟次數過多警告",
@@ -2593,8 +2593,9 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "count(irate(container_cpu_usage_seconds_total{id=~\"/docker/.*\"}[10m]) > 0.5) by (container_label_com_docker_swarm_service_name) > 1",
+          "expr": "changes((count(count_over_time(container_last_seen{id=~\"/docker/.*\", container_label_com_docker_stack_namespace!=\"docker-swarm-prom\", container_label_com_docker_stack_namespace!=\"fluent-bit\"}[10m])) by (container_label_com_docker_swarm_service_name) > 1)[10m:])",
           "format": "time_series",
+          "hide": false,
           "interval": "5m",
           "intervalFactor": 1,
           "legendFormat": "{{container_label_com_docker_swarm_service_name}}",
@@ -2771,5 +2772,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 51
+  "version": 52
 }
