@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1592632719791,
+  "iteration": 1592979691897,
   "links": [],
   "panels": [
     {
@@ -86,7 +86,7 @@
           "refId": "B"
         },
         {
-          "expr": "avg_over_time(probe_success{instance=\"https://jenkins.softleader.com.tw\"}[5m])",
+          "expr": "avg_over_time(probe_success{instance=\"https://jenkins.softleader.com.tw/api/json\"}[5m])",
           "format": "heatmap",
           "instant": false,
           "interval": "$interval",
@@ -1039,7 +1039,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "probe_success{instance=\"https://jenkins.softleader.com.tw\"}",
+          "expr": "probe_success{instance=\"https://jenkins.softleader.com.tw/api/json\"}",
           "format": "time_series",
           "instant": false,
           "interval": "$interval",
@@ -2928,5 +2928,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 55
+  "version": 56
 }
