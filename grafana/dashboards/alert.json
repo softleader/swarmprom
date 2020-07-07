@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1594086969494,
+  "iteration": 1594089267398,
   "links": [],
   "panels": [
     {
@@ -154,6 +154,14 @@
           "intervalFactor": 1,
           "legendFormat": "DB:Mssql",
           "refId": "J"
+        },
+        {
+          "expr": "avg_over_time(probe_success{instance=\"192.168.1.90:50000\"}[5m])",
+          "format": "heatmap",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "DB:DB2",
+          "refId": "K"
         }
       ],
       "timeFrom": null,
@@ -235,6 +243,483 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "公司 SIT OracleDB 連不到囉!",
+        "name": "DB:Oracle alert",
+        "noDataState": "alerting",
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "fill": 2,
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 6
+      },
+      "id": 29,
+      "interval": "15s",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {},
+      "percentage": false,
+      "pluginVersion": "6.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "DB:Oracle",
+          "color": "#FF780A"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "expr": "probe_success{instance=\"192.168.1.75:1521\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "DB:Oracle",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "DB:Oracle(75)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": 5,
+        "min": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "alert": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "1m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "公司 SIT MSSQL 連不到囉!",
+        "name": "DB:Mssql health",
+        "noDataState": "alerting",
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "fill": 2,
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 8,
+        "y": 6
+      },
+      "id": 28,
+      "interval": "15s",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {},
+      "percentage": false,
+      "pluginVersion": "6.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "DB:Mssql",
+          "color": "#C0D8FF"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "expr": "probe_success{instance=\"192.168.1.90:1433\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "DB:Mssql",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "DB:Mssql(90)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": 5,
+        "min": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "alert": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "1m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "公司 SIT DB2 連不到囉!",
+        "name": "DB:DB2 alert",
+        "noDataState": "alerting",
+        "notifications": []
+      },
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "fill": 2,
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 6
+      },
+      "id": 30,
+      "interval": "15s",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {},
+      "percentage": false,
+      "pluginVersion": "6.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "DB:DB2",
+          "color": "#8AB8FF"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "expr": "probe_success{instance=\"192.168.1.90:50000\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "DB:DB2",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "DB:DB2(90)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": 5,
+        "min": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "alert": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "1m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "公司 SIT Kibana 連不到 請檢查 77 是否需要重開機",
         "name": "Kibana service health",
         "noDataState": "alerting",
         "notifications": [
@@ -254,7 +739,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 6
+        "y": 10
       },
       "id": 17,
       "interval": "15s",
@@ -394,6 +879,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "公司 Javascript registry 連不到 請檢查 77 是否需要重開機",
         "name": "Sinopia service health",
         "noDataState": "alerting",
         "notifications": [
@@ -413,7 +899,7 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 6
+        "y": 10
       },
       "id": 18,
       "interval": "15s",
@@ -553,6 +1039,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "請假系統沒上線! 如果有自動過版 Rhys 會先講",
         "name": "Softleader-Leave service health",
         "noDataState": "alerting",
         "notifications": [
@@ -572,7 +1059,7 @@
         "h": 4,
         "w": 4,
         "x": 8,
-        "y": 6
+        "y": 10
       },
       "id": 21,
       "interval": "15s",
@@ -712,6 +1199,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "Matt 的 Mailbot 沒有上線 (目前不屬在SIT 十分鐘內應自動重啟)",
         "name": "MailBot service health",
         "noDataState": "alerting",
         "notifications": [
@@ -731,7 +1219,7 @@
         "h": 4,
         "w": 4,
         "x": 12,
-        "y": 6
+        "y": 10
       },
       "id": 22,
       "interval": "15s",
@@ -871,6 +1359,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "Matt 的 Hrbot 沒有上線 (目前不屬在SIT 十分鐘內應自動重啟)",
         "name": "HrBot alert",
         "noDataState": "alerting",
         "notifications": [
@@ -890,7 +1379,7 @@
         "h": 4,
         "w": 4,
         "x": 16,
-        "y": 6
+        "y": 10
       },
       "id": 23,
       "interval": "15s",
@@ -1030,165 +1519,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
-        "name": "DB:Oracle alert",
-        "noDataState": "alerting",
-        "notifications": [
-          {
-            "uid": "sV1iEm6Wk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus-50",
-      "fill": 2,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 6
-      },
-      "id": 29,
-      "interval": "15s",
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "options": {},
-      "percentage": false,
-      "pluginVersion": "6.2.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "DB:Oracle",
-          "color": "#FF780A"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
-      "targets": [
-        {
-          "expr": "probe_success{instance=\"192.168.1.75:1521\"}",
-          "format": "time_series",
-          "instant": false,
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "DB:Oracle",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "DB:Oracle",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": 5,
-        "min": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": "1",
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "alert": {
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [],
-              "type": "no_value"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": [
-                "A",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "1m",
-        "frequency": "1m",
-        "handler": 1,
+        "message": "SIT 用的 jenkins 連不到",
         "name": "Jenkins-SIT service health",
         "noDataState": "alerting",
         "notifications": [
@@ -1208,7 +1539,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 10
+        "y": 14
       },
       "id": 19,
       "interval": "15s",
@@ -1348,6 +1679,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "RD 用的 jenkins 連不到 請檢查 77 是否需要重開機",
         "name": "Jenkins-RD service health",
         "noDataState": "alerting",
         "notifications": [
@@ -1367,7 +1699,7 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 10
+        "y": 14
       },
       "id": 20,
       "interval": "15s",
@@ -1507,6 +1839,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "公司 SVN 斷線了喔! 請盡速確認!",
         "name": "SVN(AWS) health",
         "noDataState": "alerting",
         "notifications": [
@@ -1526,7 +1859,7 @@
         "h": 4,
         "w": 4,
         "x": 8,
-        "y": 10
+        "y": 14
       },
       "id": 26,
       "interval": "15s",
@@ -1666,6 +1999,7 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "公司 Jboss EAP 環境斷線了 (給Cressia用的)",
         "name": "Jboss-EAP(57) health",
         "noDataState": "alerting",
         "notifications": [
@@ -1685,7 +2019,7 @@
         "h": 4,
         "w": 4,
         "x": 12,
-        "y": 10
+        "y": 14
       },
       "id": 27,
       "interval": "15s",
@@ -1774,171 +2108,12 @@
       }
     },
     {
-      "alert": {
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [],
-              "type": "no_value"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": [
-                "A",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "1m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "DB:Mssql health",
-        "noDataState": "alerting",
-        "notifications": [
-          {
-            "uid": "sV1iEm6Wk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus-50",
-      "fill": 2,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 10
-      },
-      "id": 28,
-      "interval": "15s",
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "options": {},
-      "percentage": false,
-      "pluginVersion": "6.2.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "DB:Mssql",
-          "color": "#C0D8FF"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
-      "targets": [
-        {
-          "expr": "probe_success{instance=\"192.168.1.90:1433\"}",
-          "format": "time_series",
-          "instant": false,
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "DB:Mssql",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "DB:Mssql",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": 5,
-        "min": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": "1",
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 18
       },
       "id": 8,
       "panels": [],
@@ -1998,7 +2173,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 15
+        "y": 19
       },
       "id": 2,
       "legend": {
@@ -2349,7 +2524,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 15
+        "y": 19
       },
       "id": 4,
       "interval": "",
@@ -2606,7 +2781,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 28
       },
       "id": 10,
       "legend": {
@@ -2800,7 +2975,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 28
       },
       "id": 11,
       "legend": {
@@ -2952,7 +3127,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 34
       },
       "hideTimeOverride": false,
       "id": 6,
@@ -3096,7 +3271,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 34
       },
       "id": 25,
       "interval": "",
@@ -3189,7 +3364,7 @@
       }
     }
   ],
-  "refresh": "1m",
+  "refresh": "5s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [],
@@ -3307,5 +3482,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 57
+  "version": 58
 }
