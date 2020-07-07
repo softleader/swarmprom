@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1594092308248,
+  "iteration": 1594102266163,
   "links": [],
   "panels": [
     {
@@ -192,6 +192,19 @@
       "yBucketSize": null
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 32,
+      "panels": [],
+      "title": "服務細節",
+      "type": "row"
+    },
+    {
       "alert": {
         "conditions": [
           {
@@ -260,10 +273,10 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 8,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 29,
       "interval": "15s",
@@ -420,10 +433,10 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 8,
         "x": 8,
-        "y": 7
+        "y": 8
       },
       "id": 28,
       "interval": "15s",
@@ -576,10 +589,10 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 8,
         "x": 16,
-        "y": 7
+        "y": 8
       },
       "id": 30,
       "interval": "15s",
@@ -736,7 +749,7 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 0,
         "y": 11
@@ -896,7 +909,7 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 4,
         "y": 11
@@ -1056,7 +1069,7 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 8,
         "y": 11
@@ -1199,6 +1212,166 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
+        "message": "公司 SVN 斷線了喔! 請盡速確認!",
+        "name": "SVN(AWS) health",
+        "noDataState": "alerting",
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "fill": 2,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 11
+      },
+      "id": 26,
+      "interval": "15s",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {},
+      "percentage": false,
+      "pluginVersion": "6.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "SVN",
+          "color": "#5794F2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "expr": "probe_success{instance=\"52.193.0.20:3690\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "SVN",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "SVN(AWS)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": 5,
+        "min": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "alert": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "1m",
+        "frequency": "1m",
+        "handler": 1,
         "message": "Matt 的 Mailbot 沒有上線 (目前不屬在SIT 十分鐘內應自動重啟)",
         "name": "MailBot service health",
         "noDataState": "alerting",
@@ -1216,9 +1389,9 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
-        "x": 12,
+        "x": 16,
         "y": 11
       },
       "id": 22,
@@ -1376,9 +1549,9 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
-        "x": 16,
+        "x": 20,
         "y": 11
       },
       "id": 23,
@@ -1536,10 +1709,10 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 0,
-        "y": 15
+        "y": 14
       },
       "id": 19,
       "interval": "15s",
@@ -1696,10 +1869,10 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
         "x": 4,
-        "y": 15
+        "y": 14
       },
       "id": 20,
       "interval": "15s",
@@ -1839,166 +2012,6 @@
         "for": "1m",
         "frequency": "1m",
         "handler": 1,
-        "message": "公司 SVN 斷線了喔! 請盡速確認!",
-        "name": "SVN(AWS) health",
-        "noDataState": "alerting",
-        "notifications": [
-          {
-            "uid": "sV1iEm6Wk"
-          }
-        ]
-      },
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus-50",
-      "fill": 2,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 8,
-        "y": 15
-      },
-      "id": 26,
-      "interval": "15s",
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "options": {},
-      "percentage": false,
-      "pluginVersion": "6.2.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "SVN",
-          "color": "#5794F2"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
-      "targets": [
-        {
-          "expr": "probe_success{instance=\"52.193.0.20:3690\"}",
-          "format": "time_series",
-          "instant": false,
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "SVN",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "SVN(AWS)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": 5,
-        "min": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": "1",
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "alert": {
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [],
-              "type": "no_value"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": [
-                "A",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "1m",
-        "frequency": "1m",
-        "handler": 1,
         "message": "公司 Jboss EAP 環境斷線了 (給Cressia用的)",
         "name": "Jboss-EAP(57) health",
         "noDataState": "alerting",
@@ -2016,10 +2029,10 @@
       "datasource": "Prometheus-50",
       "fill": 2,
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 4,
-        "x": 12,
-        "y": 15
+        "x": 8,
+        "y": 14
       },
       "id": 27,
       "interval": "15s",
@@ -2113,7 +2126,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 17
       },
       "id": 8,
       "panels": [],
@@ -2173,7 +2186,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 20
+        "y": 18
       },
       "id": 2,
       "legend": {
@@ -2524,7 +2537,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 20
+        "y": 18
       },
       "id": 4,
       "interval": "",
@@ -2781,7 +2794,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 27
       },
       "id": 10,
       "legend": {
@@ -2975,7 +2988,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 27
       },
       "id": 11,
       "legend": {
@@ -3127,7 +3140,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 33
       },
       "hideTimeOverride": false,
       "id": 6,
@@ -3271,7 +3284,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 33
       },
       "id": 25,
       "interval": "",
@@ -3451,7 +3464,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -3482,5 +3495,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 59
+  "version": 60
 }
