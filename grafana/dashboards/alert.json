@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1594188240772,
+  "iteration": 1594792846531,
   "links": [],
   "panels": [
     {
@@ -2901,6 +2901,107 @@
       }
     },
     {
+      "cacheTimeout": null,
+      "cards": {
+        "cardPadding": null,
+        "cardRound": 2
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateSpectral",
+        "exponent": 0.5,
+        "max": 500,
+        "min": 0,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": "Elasticsearch",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "heatmap": {},
+      "hideZeroBuckets": true,
+      "highlightCards": true,
+      "id": 36,
+      "interval": "$interval",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "pluginVersion": "6.2.5",
+      "reverseYBuckets": true,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "jsoncontent.appName.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Panel Title",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": null,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "short",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "middle",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
       "alert": {
         "conditions": [
           {
@@ -2994,7 +3095,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 37
       },
       "id": 10,
       "legend": {
@@ -3188,7 +3289,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 37
       },
       "id": 11,
       "legend": {
@@ -3340,7 +3441,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 43
       },
       "hideTimeOverride": false,
       "id": 6,
@@ -3484,7 +3585,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 43
       },
       "id": 25,
       "interval": "",
@@ -3664,7 +3765,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -3695,5 +3796,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 61
+  "version": 62
 }
