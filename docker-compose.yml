@@ -58,7 +58,7 @@ services:
           memory: 128M
 
   grafana:
-    image: softleader/swarmprom-grafana:6.2.5
+    image: softleader/swarmprom-grafana:7.1.5
     networks:
       - net
     environment:
