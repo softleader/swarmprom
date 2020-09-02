@@ -15,11 +15,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1594793710523,
+  "iteration": 1599034049705,
   "links": [],
   "panels": [
     {
       "collapsed": false,
+      "datasource": "Prometheus-50",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -48,6 +49,12 @@
       },
       "dataFormat": "tsbuckets",
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 24,
@@ -63,7 +70,6 @@
         "show": true
       },
       "links": [],
-      "options": {},
       "pluginVersion": "6.2.5",
       "reverseYBuckets": false,
       "targets": [
@@ -193,6 +199,7 @@
     },
     {
       "collapsed": false,
+      "datasource": "Prometheus-50",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -271,13 +278,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 8,
         "x": 0,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 29,
       "interval": "15s",
       "legend": {
@@ -295,9 +310,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -431,13 +445,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 8,
         "x": 8,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 28,
       "interval": "15s",
       "legend": {
@@ -455,9 +477,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -587,13 +608,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 8,
         "x": 16,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 30,
       "interval": "15s",
       "legend": {
@@ -611,9 +640,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -747,13 +775,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 0,
         "y": 11
       },
+      "hiddenSeries": false,
       "id": 17,
       "interval": "15s",
       "legend": {
@@ -771,9 +807,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -907,13 +942,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 4,
         "y": 11
       },
+      "hiddenSeries": false,
       "id": 18,
       "interval": "15s",
       "legend": {
@@ -931,9 +974,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1067,13 +1109,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 8,
         "y": 11
       },
+      "hiddenSeries": false,
       "id": 21,
       "interval": "15s",
       "legend": {
@@ -1091,9 +1141,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1227,13 +1276,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 12,
         "y": 11
       },
+      "hiddenSeries": false,
       "id": 26,
       "interval": "15s",
       "legend": {
@@ -1251,9 +1308,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1387,13 +1443,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 16,
         "y": 11
       },
+      "hiddenSeries": false,
       "id": 22,
       "interval": "15s",
       "legend": {
@@ -1411,9 +1475,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1547,13 +1610,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 20,
         "y": 11
       },
+      "hiddenSeries": false,
       "id": 23,
       "interval": "15s",
       "legend": {
@@ -1571,9 +1642,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1707,13 +1777,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 0,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 19,
       "interval": "15s",
       "legend": {
@@ -1731,9 +1809,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1867,13 +1944,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 4,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 20,
       "interval": "15s",
       "legend": {
@@ -1891,9 +1976,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2027,13 +2111,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 8,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 27,
       "interval": "15s",
       "legend": {
@@ -2051,9 +2143,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2127,13 +2218,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 12,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 33,
       "interval": "15s",
       "legend": {
@@ -2151,9 +2250,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2227,13 +2325,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 16,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 34,
       "interval": "15s",
       "legend": {
@@ -2251,9 +2357,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2322,6 +2427,7 @@
     },
     {
       "collapsed": false,
+      "datasource": "Prometheus-50",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2335,6 +2441,7 @@
     },
     {
       "alert": {
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -2380,14 +2487,23 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus-50",
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "avg": false,
@@ -2402,9 +2518,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2731,14 +2846,23 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus-50",
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 12,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 4,
       "interval": "",
       "legend": {
@@ -2758,9 +2882,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
-      "pluginVersion": "6.2.5",
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2918,6 +3041,12 @@
       "dataFormat": "tsbuckets",
       "datasource": "Elasticsearch",
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 9,
         "w": 24,
@@ -2933,7 +3062,6 @@
         "show": false
       },
       "links": [],
-      "options": {},
       "pluginVersion": "6.2.5",
       "reverseYBuckets": true,
       "targets": [
@@ -3091,13 +3219,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 0,
         "y": 36
       },
+      "hiddenSeries": false,
       "id": 10,
       "legend": {
         "avg": false,
@@ -3113,8 +3249,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3285,13 +3421,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus-50",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 2,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 12,
         "y": 36
       },
+      "hiddenSeries": false,
       "id": 11,
       "legend": {
         "avg": false,
@@ -3307,8 +3451,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3436,14 +3580,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus-50",
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 0,
         "y": 42
       },
+      "hiddenSeries": false,
       "hideTimeOverride": false,
       "id": 6,
       "legend": {
@@ -3465,8 +3618,8 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3580,14 +3733,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus-50",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 12,
         "y": 42
       },
+      "hiddenSeries": false,
       "id": 25,
       "interval": "",
       "legend": {
@@ -3608,8 +3770,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3680,7 +3842,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 18,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3690,6 +3852,7 @@
         "auto_count": 100,
         "auto_min": "15s",
         "current": {
+          "selected": false,
           "text": "auto",
           "value": "$__auto_interval_interval"
         },
@@ -3797,5 +3960,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 63
+  "version": 64
 }
