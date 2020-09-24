@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1599034976123,
+  "iteration": 1600941012893,
   "links": [],
   "panels": [
     {
@@ -2590,6 +2590,7 @@
     },
     {
       "alert": {
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -2664,27 +2665,6 @@
             },
             "query": {
               "params": [
-                "E",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [],
-              "type": "no_value"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": [
                 "F",
                 "1m",
                 "now"
@@ -2707,48 +2687,6 @@
             "query": {
               "params": [
                 "G",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [],
-              "type": "no_value"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": [
-                "H",
-                "1m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [],
-              "type": "no_value"
-            },
-            "operator": {
-              "type": "or"
-            },
-            "query": {
-              "params": [
-                "I",
                 "1m",
                 "now"
               ]
@@ -2825,7 +2763,7 @@
         ],
         "executionErrorState": "alerting",
         "for": "15s",
-        "frequency": "1m",
+        "frequency": "30m",
         "handler": 1,
         "message": "Node is down",
         "name": "Nodes healthy alert",
@@ -2893,6 +2831,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "count(node_meta{node_name=\"swarm-worker-62\"}) by (node_name)",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "A"
+        },
+        {
           "expr": "count(node_meta{node_name=\"sladmin73\"}) by (node_name)",
           "format": "time_series",
           "interval": "$interval",
@@ -2917,14 +2863,6 @@
           "refId": "D"
         },
         {
-          "expr": "count(node_meta{node_name=\"swarm-worker-95\"}) by (node_name)",
-          "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "swarm-worker-95",
-          "refId": "E"
-        },
-        {
           "expr": "count(node_meta{node_name=\"swarm-worker-96\"}) by (node_name)",
           "format": "time_series",
           "interval": "$interval",
@@ -2941,22 +2879,6 @@
           "refId": "G"
         },
         {
-          "expr": "count(node_meta{node_name=\"sladmin-91\"}) by (node_name)",
-          "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
-          "refId": "H"
-        },
-        {
-          "expr": "count(node_meta{node_name=\"sladmin-92\"}) by (node_name)",
-          "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
-          "refId": "I"
-        },
-        {
           "expr": "count(node_meta{node_name=\"sladmin-76\"}) by (node_name)",
           "format": "time_series",
           "interval": "$interval",
@@ -2971,14 +2893,6 @@
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "K"
-        },
-        {
-          "expr": "count(node_meta{node_name=\"swarm-worker-62\"}) by (node_name)",
-          "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "{{node_name}}",
-          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -3963,5 +3877,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 65
+  "version": 66
 }
