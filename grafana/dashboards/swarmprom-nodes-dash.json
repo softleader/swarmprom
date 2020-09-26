@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1589424417974,
+  "iteration": 1601104874438,
   "links": [],
   "panels": [
     {
@@ -30,6 +30,12 @@
       ],
       "datasource": "Prometheus",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "s",
       "gauge": {
         "maxValue": 100,
@@ -62,7 +68,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -80,7 +85,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "{node_name=\"swarm-master-60\"}",
       "targets": [
         {
           "expr": "topk(1, sum((node_time_seconds - node_boot_time_seconds) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name))",
@@ -115,7 +120,14 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -147,7 +159,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -199,7 +210,14 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -232,7 +250,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -285,7 +302,14 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -318,7 +342,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -377,6 +400,13 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -392,7 +422,6 @@
         "show": true
       },
       "links": [],
-      "options": {},
       "reverseYBuckets": false,
       "targets": [
         {
@@ -438,14 +467,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 4
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "alignAsTable": true,
@@ -464,8 +502,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -533,7 +571,14 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -566,7 +611,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -619,6 +663,13 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -650,7 +701,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -701,7 +751,14 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -734,7 +791,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -787,6 +843,13 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -818,7 +881,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -869,6 +931,13 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -900,7 +969,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -951,7 +1019,14 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -984,7 +1059,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1037,6 +1111,13 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -1068,7 +1149,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1111,7 +1191,42 @@
       "valueName": "avg"
     },
     {
+      "datasource": null,
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 2,
+          "mappings": [],
+          "max": 34359738368,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "index": 0,
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "index": 1,
+                "value": 17179869184
+              },
+              {
+                "color": "red",
+                "index": 2,
+                "value": 27487790694
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 24,
@@ -1122,44 +1237,22 @@
       "links": [],
       "options": {
         "displayMode": "lcd",
-        "fieldOptions": {
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "last"
           ],
-          "defaults": {
-            "decimals": 2,
-            "max": 34359738368,
-            "min": 0,
-            "unit": "decbytes"
-          },
-          "mappings": [],
-          "override": {},
-          "thresholds": [
-            {
-              "color": "green",
-              "index": 0,
-              "value": null
-            },
-            {
-              "color": "#EAB839",
-              "index": 1,
-              "value": 17179869184
-            },
-            {
-              "color": "red",
-              "index": 2,
-              "value": 27487790694
-            }
-          ],
+          "fields": "",
           "values": false
         },
-        "orientation": "horizontal"
+        "showUnfilled": true
       },
+      "pluginVersion": "7.1.5",
       "repeat": null,
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "sum((node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Cached_bytes - node_memory_Buffers_bytes - node_memory_Slab_bytes) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
+          "expr": "sum((node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) * on(instance) group_left(node_name) node_meta{node_id=~\"$node_id\"}) by (node_name)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1185,13 +1278,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 15,
       "legend": {
         "alignAsTable": true,
@@ -1210,8 +1312,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1283,13 +1385,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 21,
       "legend": {
         "alignAsTable": true,
@@ -1308,8 +1419,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1373,14 +1484,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 0,
         "y": 35
       },
+      "hiddenSeries": false,
       "hideTimeOverride": false,
       "id": 25,
       "legend": {
@@ -1402,8 +1522,8 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1473,14 +1593,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 12,
         "y": 35
       },
+      "hiddenSeries": false,
       "hideTimeOverride": false,
       "id": 26,
       "legend": {
@@ -1502,8 +1631,8 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1572,7 +1701,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1597,8 +1733,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1672,6 +1808,13 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1700,8 +1843,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 1,
       "points": false,
       "renderer": "flot",
@@ -1778,7 +1921,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1802,8 +1952,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1875,7 +2025,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1901,8 +2058,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1966,7 +2123,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 3,
       "gridPos": {
         "h": 7,
@@ -1994,8 +2158,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2067,6 +2231,13 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -2098,7 +2269,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -2145,6 +2315,13 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -2168,8 +2345,8 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2240,6 +2417,13 @@
     },
     {
       "columns": [],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -2250,7 +2434,6 @@
       "hideTimeOverride": true,
       "id": 20,
       "links": [],
-      "options": {},
       "pageSize": null,
       "scroll": true,
       "showHeader": true,
@@ -2261,12 +2444,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "date"
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2292,11 +2477,11 @@
       "timeFrom": "1s",
       "title": "Cluster members",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 18,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "swarmprom"
@@ -2306,6 +2491,7 @@
       {
         "allValue": ".+",
         "current": {
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -2324,17 +2510,38 @@
         "sort": 0,
         "tagValuesQuery": "label_values({node_id=\"$tag\"},node_name)",
         "tags": [
-          "sladmin73",
-          "swarm-master-60",
-          "sladmin-91",
-          "sladmin-92",
-          "swarm-worker-95",
-          "swarm-worker-51",
-          "sladmin-76",
-          "sleader74",
-          "swarm-worker-96",
-          "swarm-worker-62",
-          "swarm-worker-97"
+          {
+            "selected": false,
+            "text": "sladmin73"
+          },
+          {
+            "selected": false,
+            "text": "swarm-master-60"
+          },
+          {
+            "selected": false,
+            "text": "sleader74"
+          },
+          {
+            "selected": false,
+            "text": "swarm-worker-51"
+          },
+          {
+            "selected": false,
+            "text": "swarm-worker-62"
+          },
+          {
+            "selected": false,
+            "text": "sladmin-76"
+          },
+          {
+            "selected": false,
+            "text": "swarm-worker-96"
+          },
+          {
+            "selected": false,
+            "text": "swarm-worker-97"
+          }
         ],
         "tagsQuery": "label_values(node_meta, node_name)",
         "type": "query",
@@ -2345,6 +2552,7 @@
         "auto_count": 100,
         "auto_min": "30s",
         "current": {
+          "selected": false,
           "text": "auto",
           "value": "$__auto_interval_interval"
         },
@@ -2447,5 +2655,5 @@
   "timezone": "",
   "title": "Docker Swarm Nodes",
   "uid": "BPlb-Sgik",
-  "version": 7
+  "version": 8
 }
