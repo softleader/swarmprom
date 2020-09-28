@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1600941012893,
+  "iteration": 1601271289526,
   "links": [],
   "panels": [
     {
@@ -2759,6 +2759,27 @@
               "type": "last"
             },
             "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "E",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
           }
         ],
         "executionErrorState": "alerting",
@@ -2893,6 +2914,14 @@
           "intervalFactor": 1,
           "legendFormat": "{{node_name}}",
           "refId": "K"
+        },
+        {
+          "expr": "count(node_meta{node_name=\"sladmin-80\"}) by (node_name)",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "{{node_name}}",
+          "refId": "E"
         }
       ],
       "thresholds": [],
@@ -3877,5 +3906,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 66
+  "version": 67
 }
