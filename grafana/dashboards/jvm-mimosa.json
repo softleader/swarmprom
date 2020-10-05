@@ -30,8 +30,7 @@
   "editable": true,
   "gnetId": 4701,
   "graphTooltip": 1,
-  "id": 17,
-  "iteration": 1601860645581,
+  "iteration": 1601862244223,
   "links": [],
   "panels": [
     {
@@ -117,7 +116,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "process_uptime_seconds{application=\"tmmp-audit\", instance=\"mimosa.audit.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.5-SNAPSHOT\"}",
+      "tableColumn": "process_uptime_seconds{application=\"tmmp-tech\", instance=\"mimosa.tech.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.30-SNAPSHOT\"}",
       "targets": [
         {
           "expr": "process_uptime_seconds{application=\"$application\"}",
@@ -211,7 +210,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "{application=\"tmmp-audit\", instance=\"mimosa.audit.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.5-SNAPSHOT\"}",
+      "tableColumn": "{application=\"tmmp-tech\", instance=\"mimosa.tech.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.30-SNAPSHOT\"}",
       "targets": [
         {
           "expr": "process_start_time_seconds{application=\"$application\"}*1000",
@@ -2274,7 +2273,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 36
       },
@@ -2302,6 +2301,13 @@
       "points": false,
       "renderer": "flot",
       "repeat": "jvm_memory_pool_heap",
+      "scopedVars": {
+        "jvm_memory_pool_heap": {
+          "selected": false,
+          "text": "ZHeap",
+          "value": "ZHeap"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -2459,6 +2465,466 @@
       "points": false,
       "renderer": "flot",
       "repeat": "jvm_memory_pool_nonheap",
+      "scopedVars": {
+        "jvm_memory_pool_nonheap": {
+          "selected": false,
+          "text": "CodeHeap 'non-nmethods'",
+          "value": "CodeHeap 'non-nmethods'"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "used",
+          "metric": "",
+          "refId": "A",
+          "step": 1800
+        },
+        {
+          "expr": "jvm_memory_committed_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "commited",
+          "metric": "",
+          "refId": "B",
+          "step": 1800
+        },
+        {
+          "expr": "jvm_memory_max_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "max",
+          "metric": "",
+          "refId": "C",
+          "step": 1800
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$jvm_memory_pool_nonheap",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "x-axis": true,
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 44
+      },
+      "hiddenSeries": false,
+      "id": 134,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatIteration": 1601862244223,
+      "repeatPanelId": 78,
+      "scopedVars": {
+        "jvm_memory_pool_nonheap": {
+          "selected": false,
+          "text": "CodeHeap 'non-profiled nmethods'",
+          "value": "CodeHeap 'non-profiled nmethods'"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "used",
+          "metric": "",
+          "refId": "A",
+          "step": 1800
+        },
+        {
+          "expr": "jvm_memory_committed_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "commited",
+          "metric": "",
+          "refId": "B",
+          "step": 1800
+        },
+        {
+          "expr": "jvm_memory_max_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "max",
+          "metric": "",
+          "refId": "C",
+          "step": 1800
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$jvm_memory_pool_nonheap",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "x-axis": true,
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 44
+      },
+      "hiddenSeries": false,
+      "id": 135,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatIteration": 1601862244223,
+      "repeatPanelId": 78,
+      "scopedVars": {
+        "jvm_memory_pool_nonheap": {
+          "selected": false,
+          "text": "CodeHeap 'profiled nmethods'",
+          "value": "CodeHeap 'profiled nmethods'"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "used",
+          "metric": "",
+          "refId": "A",
+          "step": 1800
+        },
+        {
+          "expr": "jvm_memory_committed_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "commited",
+          "metric": "",
+          "refId": "B",
+          "step": 1800
+        },
+        {
+          "expr": "jvm_memory_max_bytes{application=\"$application\", id=~\"$jvm_memory_pool_nonheap\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "max",
+          "metric": "",
+          "refId": "C",
+          "step": 1800
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$jvm_memory_pool_nonheap",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "x-axis": true,
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus-50",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 51
+      },
+      "hiddenSeries": false,
+      "id": 136,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatIteration": 1601862244223,
+      "repeatPanelId": 78,
+      "scopedVars": {
+        "jvm_memory_pool_nonheap": {
+          "selected": false,
+          "text": "Metaspace",
+          "value": "Metaspace"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -2553,7 +3019,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 58
       },
       "id": 131,
       "panels": [],
@@ -2580,7 +3046,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 52
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 98,
@@ -2676,7 +3142,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 52
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 101,
@@ -2782,7 +3248,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 52
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 99,
@@ -2874,7 +3340,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 66
       },
       "id": 132,
       "panels": [],
@@ -2911,7 +3377,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 60
+        "y": 67
       },
       "hiddenSeries": false,
       "id": 37,
@@ -3025,7 +3491,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 60
+        "y": 67
       },
       "hiddenSeries": false,
       "id": 38,
@@ -3120,7 +3586,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 74
       },
       "id": 133,
       "panels": [],
@@ -3157,7 +3623,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 68
+        "y": 75
       },
       "hiddenSeries": false,
       "id": 33,
@@ -3280,7 +3746,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 68
+        "y": 75
       },
       "hiddenSeries": false,
       "id": 83,
@@ -3395,7 +3861,7 @@
         "h": 7,
         "w": 6,
         "x": 12,
-        "y": 68
+        "y": 75
       },
       "hiddenSeries": false,
       "id": 85,
@@ -3518,7 +3984,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 68
+        "y": 75
       },
       "hiddenSeries": false,
       "id": 84,
@@ -3617,8 +4083,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "tmmp-audit",
-          "value": "tmmp-audit"
+          "text": "tmmp-tech",
+          "value": "tmmp-tech"
         },
         "hide": 0,
         "includeAll": false,
@@ -3627,7 +4093,7 @@
         "name": "application",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "tmmp-tech",
             "value": "tmmp-tech"
           },
@@ -3642,7 +4108,7 @@
             "value": "tmmp-customer"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "tmmp-audit",
             "value": "tmmp-audit"
           },
@@ -3656,6 +4122,58 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "Prometheus-50",
+        "definition": "label_values(jvm_memory_used_bytes{application=\"$application\", job=\"mimosa\", area=\"heap\"},id)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "JVM Memory Pools Heap",
+        "multi": false,
+        "name": "jvm_memory_pool_heap",
+        "options": [],
+        "query": "label_values(jvm_memory_used_bytes{application=\"$application\", job=\"mimosa\", area=\"heap\"},id)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "Prometheus-50",
+        "definition": "label_values(jvm_memory_used_bytes{application=\"$application\", job=\"mimosa\", area=\"nonheap\"},id)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "JVM Memory Pools Non-Heap",
+        "multi": false,
+        "name": "jvm_memory_pool_nonheap",
+        "options": [],
+        "query": "label_values(jvm_memory_used_bytes{application=\"$application\", job=\"mimosa\", area=\"nonheap\"},id)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -3692,5 +4210,5 @@
   "timezone": "",
   "title": "Mimosa JVM Dashboard",
   "uid": "q3efds3eq",
-  "version": 5
+  "version": 6
 }
