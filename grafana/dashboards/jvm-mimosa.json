@@ -31,7 +31,7 @@
   "gnetId": 4701,
   "graphTooltip": 1,
   "id": 17,
-  "iteration": 1601370252317,
+  "iteration": 1601860645581,
   "links": [],
   "panels": [
     {
@@ -117,7 +117,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "process_uptime_seconds{application=\"tmmp-tech\", instance=\"mimosa.tech.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.28-SNAPSHOT\"}",
+      "tableColumn": "process_uptime_seconds{application=\"tmmp-audit\", instance=\"mimosa.audit.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.5-SNAPSHOT\"}",
       "targets": [
         {
           "expr": "process_uptime_seconds{application=\"$application\"}",
@@ -211,7 +211,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "{application=\"tmmp-tech\", instance=\"mimosa.tech.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.28-SNAPSHOT\"}",
+      "tableColumn": "{application=\"tmmp-audit\", instance=\"mimosa.audit.118.163.91.247.nip.io:80\", job=\"mimosa\", version=\"1.0.5-SNAPSHOT\"}",
       "targets": [
         {
           "expr": "process_start_time_seconds{application=\"$application\"}*1000",
@@ -3616,9 +3616,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "tmmp-tech",
-          "value": "tmmp-tech"
+          "selected": true,
+          "text": "tmmp-audit",
+          "value": "tmmp-audit"
         },
         "hide": 0,
         "includeAll": false,
@@ -3627,7 +3627,7 @@
         "name": "application",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "tmmp-tech",
             "value": "tmmp-tech"
           },
@@ -3640,9 +3640,19 @@
             "selected": false,
             "text": "tmmp-customer",
             "value": "tmmp-customer"
+          },
+          {
+            "selected": true,
+            "text": "tmmp-audit",
+            "value": "tmmp-audit"
+          },
+          {
+            "selected": false,
+            "text": "tmmp-url-redirect",
+            "value": "tmmp-url-redirect"
           }
         ],
-        "query": "tmmp-tech,tmmp-pos-request,tmmp-customer",
+        "query": "tmmp-tech,tmmp-pos-request,tmmp-customer,tmmp-audit,tmmp-url-redirect",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -3682,5 +3692,5 @@
   "timezone": "",
   "title": "Mimosa JVM Dashboard",
   "uid": "q3efds3eq",
-  "version": 4
+  "version": 5
 }
