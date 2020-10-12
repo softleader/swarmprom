@@ -252,15 +252,16 @@
       },
       "id": 4,
       "links": [],
-      "pageSize": 100,
+      "pageSize": 98,
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 2,
+        "col": 10,
         "desc": true
       },
       "styles": [
         {
+          "$$hashKey": "object:24",
           "alias": "Time",
           "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
@@ -268,6 +269,7 @@
           "type": "hidden"
         },
         {
+          "$$hashKey": "object:25",
           "alias": "Username",
           "align": "auto",
           "colorMode": null,
@@ -283,6 +285,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:26",
           "alias": "Login Time",
           "align": "auto",
           "colorMode": null,
@@ -300,6 +303,7 @@
           "unit": "dateTimeFromNow"
         },
         {
+          "$$hashKey": "object:27",
           "alias": "Address",
           "align": "auto",
           "colorMode": null,
@@ -317,6 +321,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:28",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -334,6 +339,7 @@
           "unit": "short"
         },
         {
+          "$$hashKey": "object:29",
           "alias": "Rx",
           "align": "auto",
           "colorMode": null,
@@ -351,6 +357,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:30",
           "alias": "Tx",
           "align": "auto",
           "colorMode": null,
@@ -368,6 +375,7 @@
           "unit": "bytes"
         },
         {
+          "$$hashKey": "object:31",
           "alias": "Remote Address",
           "align": "auto",
           "colorMode": null,
@@ -383,12 +391,85 @@
           "thresholds": [],
           "type": "string",
           "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1121",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "status_path",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1132",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "job",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1143",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1154",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "username",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
         }
       ],
       "targets": [
         {
-          "expr": "sort_desc(sum(label_replace(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}, \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\"))by(common_name, connection_time, virtual_address, real_address))",
+          "expr": "label_replace(max_over_time(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}[$__range]), \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\")",
           "format": "table",
+          "hide": false,
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
@@ -396,8 +477,9 @@
           "refId": "A"
         },
         {
-          "expr": "sum(label_replace(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}, \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\"))by(common_name, connection_time, virtual_address, real_address)",
+          "expr": "label_replace(max_over_time(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}[$__range]), \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\")",
           "format": "table",
+          "hide": false,
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
@@ -407,7 +489,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Current OpenVPN Clients",
+      "title": "Current OpenVPN Clients History",
       "transform": "table",
       "type": "table-old"
     },
@@ -815,12 +897,16 @@
       },
       "hiddenSeries": false,
       "id": 22,
+      "interval": "",
       "legend": {
+        "alignAsTable": true,
         "avg": false,
         "current": false,
+        "hideEmpty": false,
         "max": false,
         "min": false,
-        "show": false,
+        "rightSide": true,
+        "show": true,
         "total": false,
         "values": false
       },
@@ -835,6 +921,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:2480",
           "alias": "/.+/i"
         }
       ],
@@ -843,7 +930,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(6, sum(increase(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}[1d])+increase(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}[1d]))by(real_address))",
+          "expr": "topk(6, sum(increase(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}[$__range])+increase(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}[$__range]))by(real_address))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -858,7 +945,7 @@
       "timeShift": null,
       "title": "Top Traffic",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 2,
         "value_type": "individual"
       },
@@ -867,13 +954,14 @@
         "buckets": null,
         "mode": "series",
         "name": null,
-        "show": true,
+        "show": false,
         "values": [
-          "current"
+          "total"
         ]
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2434",
           "decimals": 0,
           "format": "decbytes",
           "label": "",
@@ -883,13 +971,14 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2435",
           "decimals": 0,
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -1119,6 +1208,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2812",
           "format": "decbytes",
           "label": null,
           "logBase": 1,
@@ -1127,6 +1217,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2813",
           "decimals": null,
           "format": "bytes",
           "label": null,
@@ -1313,7 +1404,7 @@
       "yBucketSize": null
     }
   ],
-  "refresh": "10s",
+  "refresh": "1m",
   "schemaVersion": 26,
   "style": "dark",
   "tags": [
@@ -1354,5 +1445,5 @@
   "timezone": "",
   "title": "OpenVPN Server",
   "uid": "_1DM17HWk",
-  "version": 6
+  "version": 7
 }
