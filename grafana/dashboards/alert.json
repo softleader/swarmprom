@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1603157374396,
+  "iteration": 1603158312012,
   "links": [],
   "panels": [
     {
@@ -396,7 +396,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "DB:Oracle(75)",
+      "title": "DB:Oracle(75,59)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3966,5 +3966,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 69
+  "version": 70
 }
