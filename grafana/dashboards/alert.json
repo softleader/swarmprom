@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1602051649890,
+  "iteration": 1603157374396,
   "links": [],
   "panels": [
     {
@@ -213,6 +213,7 @@
     },
     {
       "alert": {
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -248,6 +249,50 @@
             "query": {
               "params": [
                 "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [],
+              "type": "no_value"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "B",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "B",
                 "1m",
                 "now"
               ]
@@ -317,12 +362,18 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "alias": "DB:Oracle",
+          "$$hashKey": "object:293",
+          "alias": "192.168.1.75:1521",
           "color": "#FF780A"
+        },
+        {
+          "$$hashKey": "object:667",
+          "alias": "192.168.1.59:1521",
+          "color": "#FFB357"
         }
       ],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": true,
       "targets": [
         {
@@ -331,8 +382,14 @@
           "instant": false,
           "interval": "$interval",
           "intervalFactor": 1,
-          "legendFormat": "DB:Oracle",
+          "legendFormat": "{{instance}}",
           "refId": "A"
+        },
+        {
+          "expr": "probe_success{instance=\"192.168.1.59:1521\"}",
+          "interval": "$interval",
+          "legendFormat": "{{instance}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -356,15 +413,17 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:300",
           "decimals": 0,
           "format": "short",
           "label": null,
           "logBase": 1,
-          "max": "1",
+          "max": "2",
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:301",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3907,5 +3966,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 68
+  "version": 69
 }
