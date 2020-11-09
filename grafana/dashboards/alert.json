@@ -3138,7 +3138,11 @@
         "message": "Mantis 無法正常服務",
         "name": "Mantis (www) alert",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "sV1iEm6Wk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
