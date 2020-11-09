@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1604912139582,
+  "iteration": 1604912986272,
   "links": [],
   "panels": [
     {
@@ -510,7 +510,7 @@
               },
               {
                 "id": "max",
-                "value": 0.01
+                "value": 0.1
               },
               {
                 "id": "thresholds",
@@ -523,11 +523,11 @@
                     },
                     {
                       "color": "#EAB839",
-                      "value": 0.005
+                      "value": 0.05
                     },
                     {
                       "color": "red",
-                      "value": 0.009
+                      "value": 0.09
                     }
                   ]
                 }
@@ -881,6 +881,7 @@
     },
     {
       "alert": {
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -985,6 +986,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:354",
           "alias": "DB:Mssql",
           "color": "#C0D8FF"
         }
@@ -1024,6 +1026,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:361",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1033,6 +1036,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:362",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1048,6 +1052,7 @@
     },
     {
       "alert": {
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -1148,6 +1153,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:246",
           "alias": "DB:DB2",
           "color": "#8AB8FF"
         }
@@ -1187,6 +1193,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:253",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1196,6 +1203,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:254",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1378,6 +1386,7 @@
     },
     {
       "alert": {
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -1482,6 +1491,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:124",
           "alias": "Sinopia",
           "color": "#FFB357"
         }
@@ -1521,6 +1531,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:131",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1530,6 +1541,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:132",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4720,5 +4732,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 71
+  "version": 72
 }
