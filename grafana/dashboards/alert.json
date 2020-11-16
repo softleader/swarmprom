@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1604912986272,
+  "iteration": 1605493086159,
   "links": [],
   "panels": [
     {
@@ -3200,7 +3200,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "probe_success{instance=\"https://service.softleader.com.tw/slmantis\"}",
+          "expr": "probe_success{instance=\"https://service.softleader.com.tw/slmantis/login_page.php\"}",
           "format": "time_series",
           "instant": false,
           "interval": "$interval",
@@ -4736,5 +4736,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 72
+  "version": 73
 }
