@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1605493086159,
+  "iteration": 1605494333078,
   "links": [],
   "panels": [
     {
@@ -4530,15 +4530,15 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "decimals": 1,
+      "decimals": 0,
       "fieldConfig": {
         "defaults": {
           "custom": {}
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
+      "fill": 2,
+      "fillGradient": 5,
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -4563,7 +4563,7 @@
         "values": true
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -4588,11 +4588,13 @@
       ],
       "thresholds": [
         {
+          "$$hashKey": "object:343",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 3
+          "value": 3,
+          "yaxis": "left"
         }
       ],
       "timeFrom": "1h",
@@ -4614,7 +4616,8 @@
       },
       "yaxes": [
         {
-          "decimals": 1,
+          "$$hashKey": "object:317",
+          "decimals": 0,
           "format": "short",
           "label": "",
           "logBase": 1,
@@ -4623,6 +4626,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:318",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4756,5 +4760,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 73
+  "version": 75
 }
