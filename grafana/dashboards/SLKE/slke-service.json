@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 23,
-  "iteration": 1605682474262,
+  "iteration": 1605688369225,
   "links": [],
   "panels": [
     {
@@ -1314,5 +1313,5 @@
   "timezone": "",
   "title": "SLKE Service",
   "uid": "Jvz4iu2Mk",
-  "version": 7
+  "version": 8
 }

@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": 9827,
   "graphTooltip": 1,
-  "id": 24,
-  "iteration": 1605686464745,
+  "iteration": 1605688407530,
   "links": [],
   "panels": [
     {
@@ -2422,5 +2421,5 @@
   "timezone": "",
   "title": "SLKE Node",
   "uid": "FCB01",
-  "version": 10
+  "version": 11
 }

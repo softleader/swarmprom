@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 22,
   "links": [],
   "panels": [
     {
@@ -387,5 +386,5 @@
   "timezone": "",
   "title": "SLKE Overview",
   "uid": "Xr_EKX2Gz",
-  "version": 4
+  "version": 5
 }
