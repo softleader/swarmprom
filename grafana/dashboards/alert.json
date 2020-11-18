@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1605494333078,
+  "id": 7,
+  "iteration": 1605686801971,
   "links": [],
   "panels": [
     {
@@ -824,12 +825,10 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:293",
           "alias": "192.168.1.75:1521",
           "color": "#FF780A"
         },
         {
-          "$$hashKey": "object:667",
           "alias": "192.168.1.59:1521",
           "color": "#FFB357"
         }
@@ -875,7 +874,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:300",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -885,7 +883,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:301",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1006,7 +1003,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:354",
           "alias": "DB:Mssql",
           "color": "#C0D8FF"
         }
@@ -1046,7 +1042,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:361",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1056,7 +1051,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:362",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1173,7 +1167,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:246",
           "alias": "DB:DB2",
           "color": "#8AB8FF"
         }
@@ -1213,7 +1206,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:253",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1223,7 +1215,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:254",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1511,7 +1502,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:124",
           "alias": "Sinopia",
           "color": "#FFB357"
         }
@@ -1551,7 +1541,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:131",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1561,7 +1550,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:132",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1849,7 +1837,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:2130",
           "alias": "SVN",
           "color": "#5794F2"
         }
@@ -1859,7 +1846,7 @@
       "steppedLine": true,
       "targets": [
         {
-          "expr": "probe_success{instance=\"52.193.0.20:3690\"}",
+          "expr": "probe_success{instance=\"svn.softleader.com.tw:3690\"}",
           "format": "time_series",
           "instant": false,
           "interval": "$interval",
@@ -1889,7 +1876,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:2137",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -1899,7 +1885,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:2138",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2020,7 +2005,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:2019",
           "alias": "MailBot",
           "color": "#B877D9"
         }
@@ -2060,7 +2044,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:2026",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2070,7 +2053,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:2027",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2191,7 +2173,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:1908",
           "alias": "HrBot",
           "color": "#B877D9"
         }
@@ -2231,7 +2212,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1915",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2241,7 +2221,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1916",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2362,7 +2341,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:2241",
           "alias": "Jenkins-SIT",
           "color": "#56A64B"
         }
@@ -2402,7 +2380,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:2248",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2412,7 +2389,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:2249",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2533,7 +2509,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:1433",
           "alias": "Jenkins-RD",
           "color": "#56A64B"
         }
@@ -2573,7 +2548,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1440",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2583,7 +2557,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1441",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2704,7 +2677,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:534",
           "alias": "Jboss-EAP",
           "color": "#F2495C"
         }
@@ -2744,7 +2716,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:541",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2754,7 +2725,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:542",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2871,7 +2841,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:652",
           "alias": "Keycload GitHub Realm",
           "color": "#FFF899"
         }
@@ -2911,7 +2880,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:659",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -2921,7 +2889,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:660",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3038,7 +3005,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:449",
           "alias": "Harbor",
           "color": "#F2CC0C"
         }
@@ -3078,7 +3044,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:456",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -3088,7 +3053,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:457",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3210,7 +3174,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:305",
           "alias": "Harbor",
           "color": "#37872D"
         }
@@ -3250,7 +3213,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:262",
           "decimals": 0,
           "format": "short",
           "label": null,
@@ -3260,7 +3222,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:263",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3860,7 +3821,6 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:26",
               "fake": true,
               "field": "jsoncontent.appName.keyword",
               "id": "3",
@@ -3873,7 +3833,6 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:27",
               "field": "@timestamp",
               "id": "2",
               "settings": {
@@ -3886,7 +3845,6 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:24",
               "field": "select field",
               "id": "1",
               "meta": {},
@@ -4588,7 +4546,6 @@
       ],
       "thresholds": [
         {
-          "$$hashKey": "object:343",
           "colorMode": "critical",
           "fill": true,
           "line": true,
@@ -4616,7 +4573,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:317",
           "decimals": 0,
           "format": "short",
           "label": "",
@@ -4626,7 +4582,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:318",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4760,5 +4715,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 75
+  "version": 76
 }
