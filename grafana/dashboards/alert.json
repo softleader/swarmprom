@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 7,
-  "iteration": 1605686801971,
+  "iteration": 1605689001506,
   "links": [],
   "panels": [
     {
@@ -138,7 +137,7 @@
           "refId": "G"
         },
         {
-          "expr": "avg_over_time(probe_success{instance=\"52.193.0.20:3690\"}[5m])",
+          "expr": "avg_over_time(probe_success{instance=\"svn.softleader.com.tw:3690\"}[5m])",
           "format": "heatmap",
           "instant": false,
           "interval": "$interval",
@@ -4715,5 +4714,5 @@
   "timezone": "",
   "title": "Alert",
   "uid": "PzMyjO-Wk",
-  "version": 76
+  "version": 77
 }
