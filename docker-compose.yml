@@ -58,7 +58,7 @@ services:
           memory: 128M
 
   grafana:
-    image: softleader/swarmprom-grafana:7.1.5
+    image: softleader/swarmprom-grafana:7.3.3
     networks:
       - net
     environment:
@@ -114,7 +114,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: softleader/swarmprom-prometheus:2.11.1-6
+    image: softleader/swarmprom-prometheus:v2.22.2
     networks:
       - net
     command:
